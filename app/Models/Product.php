@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
+{
+    use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $fillable = [
+        'name',
+        'price',
+        'rating',
+        'description',
+        'image',
+        'allergens',
+    ];
+    //Relación de todos los Products con los Orders (N:M)
+    public function orders(): BelongsToMany
+    {
+        return $this->belongsToMany(Order::class)
+                    ->withPivot('quantity', 'total_price')
+                    ->withTimestamps();
+    }
+
+    //Relación con la hamburguesa del mes de un solo producto (1:1)
+    public function monthBurger(): HasOne
+    {
+        return $this->hasOne(MonthBurger::class);
+    }
+}
