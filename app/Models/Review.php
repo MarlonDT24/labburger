@@ -16,11 +16,9 @@ class Review extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'phone',
-        'email',
-        'password',
-        'type',
+        'user_id',
+        'rating',
+        'comments',
     ];
 
     //Relación con el usuario que ha creado la review (1:N)

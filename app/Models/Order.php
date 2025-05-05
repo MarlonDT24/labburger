@@ -17,7 +17,7 @@ class Order extends Model
      */
     protected $fillable = [
         'product_id',
-        'st',
+        'state',
         'delivery_method',
         'date',
     ];
