@@ -31,6 +31,7 @@ class UserController extends Controller
     {
         $user = new User();
         $user->name = $request->input('name');
+        $user->surname = $request->input('surname');
         $user->phone = $request->input('phone');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
@@ -62,6 +63,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->name = $request->input('name');
+        $user->surname = $request->input('surname');
         $user->phone = $request->input('phone');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
