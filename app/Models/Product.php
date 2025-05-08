@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
 
     /**
@@ -24,15 +25,14 @@ class Product extends Model
         'image',
         'allergens',
     ];
-    //Relación de todos los Products con los Orders (N:M)
+
+    //Relación de todos los Products con los Orders(N:M)
     public function orders(): BelongsToMany
     {
-        return $this->belongsToMany(Order::class)
-                    ->withPivot('quantity', 'total_price')
-                    ->withTimestamps();
+        return $this->belongsToMany(Order::class)->withPivot('quantity', 'total_price')->withTimestamps();
     }
 
-    //Relación con la hamburguesa del mes de un solo producto (1:1)
+    //Relación de la hamburguesa del mesa con un solo producto Orders(1:1)
     public function monthBurger(): HasOne
     {
         return $this->hasOne(MonthBurger::class);

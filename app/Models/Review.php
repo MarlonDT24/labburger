@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
+    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
 
     /**
@@ -21,10 +22,9 @@ class Review extends Model
         'comments',
     ];
 
-    //Relación con el usuario que ha creado la review (1:N)
+    //Relación del User que ha creado la Review(1:N)
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
-
 }

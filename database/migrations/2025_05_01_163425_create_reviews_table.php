@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->integer('rating')->unsigned(); // Calificación del producto (solo valores positivos)
-            $table->text('comments')->nullable(); // Comentarios (opcional)
-            $table->unique(['user_id', 'product_id']);  // Un usuario solo puede dejar una reseña por producto
+            $table->foreignId('user_id')->constrained('cascade');
+            $table->foreignId('product_id')->constrained('cascade');
+            $table->integer('rating')->unsigned();
+            $table->text('comments')->nullable();
+            $table->unique(['user_id', 'product_id']);
             $table->timestamps();
         });
     }

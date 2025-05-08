@@ -20,6 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
         'phone',
         'email',
         'password',
@@ -48,22 +49,22 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    // Relación de pedidos es 1:N
+
+    //Relación de Pedidos(1:N)
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }
 
-    // Relación de reseñas 1:N
+    //Relación de Reseñas(1:N)
     public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);
     }
 
-    // Relación de reservas 1:N
+    //Relación de Reservas(1:N)
     public function reservations(): HasMany
     {
         return $this->hasMany(Reservation::class);
     }
-
 }

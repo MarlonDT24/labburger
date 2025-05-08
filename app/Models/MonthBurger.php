@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class MonthBurger extends Model
+class Monthburger extends Model
 {
+    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
 
     /**
@@ -15,7 +16,7 @@ class MonthBurger extends Model
      *
      * @var list<string>
      */
-    protected $fillable     = [
+    protected $fillable = [
         'product_id',
         'date',
         'ingredients',
