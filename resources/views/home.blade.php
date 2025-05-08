@@ -4,6 +4,13 @@
 
 @section('content')
     <main class="flex-1">
-        <!-- Secciones del home -->
+        <!-- Slider PRINCIPAL -->
+        @include('homeSections.slider')
+        <!-- Menu PRINCIPAL -->
+        @include('homeSections.menu')
+        <!-- Populares PRINCIPAL -->
+        @include('homeSections.populars')
+        <!-- Reviews PRINCIPAL -->
+        @include('homeSections.reviews')
     </main>
 @endsection
