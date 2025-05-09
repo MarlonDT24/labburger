@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleBtn.addEventListener('click', () => {
         navMenu.classList.toggle('hidden');
     });
-    
+
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
     let index = 0;

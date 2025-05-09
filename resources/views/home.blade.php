@@ -12,5 +12,7 @@
         @include('homeSections.populars')
         <!-- Reviews PRINCIPAL -->
         @include('homeSections.reviews')
+        <!-- Crear Review PRINCIPAL -->
+        @include('homeSections.newreview')
     </main>
 @endsection
