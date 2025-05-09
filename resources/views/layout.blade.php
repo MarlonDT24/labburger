@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('scripts')
     {{-- Este include es para llamar a las importaciones de javascript para que se renderize mejor --}}
     @include('includes.imports')
 </head>
