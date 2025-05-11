@@ -1,13 +1,23 @@
 <nav id="nav-menu" class="hidden md:flex md:space-x-6 md:justify-start col-span-1 md:col-span-auto md:static absolute top-16 left-0 w-full bg-white md:w-auto md:bg-transparent md:top-auto md:left-auto flex-col md:flex-row text-center md:text-left shadow md:shadow-none z-40">
-    <a href={{ route('home') }} class="py-2 px-4 hover:text-red-500 block">Inicio</a>
-    <a href={{ route('menu.index') }} class="py-2 px-4 hover:text-red-500 block">Carta</a>
-    <a href="#nosotros" class="py-2 px-4 hover:text-red-500 block">Nosotros</a>
-    <a href="#blog" class="py-2 px-4 hover:text-red-500 block">Blog</a>
-    <a href="#contacto" class="py-2 px-4 hover:text-red-500 block">Contactar</a>
+    <a href={{ route('home') }} class="nav-link relative px-4 py-2 overflow-hidden">
+        <span class="relative z-10 font-techno">Inicio</span>
+    </a>
+    <a href="{{ route('menu.index') }}" class="nav-link relative px-4 py-2 overflow-hidden block">
+        <span class="relative z-10 font-techno">Carta</span>
+    </a>
+    <a href="#nosotros" class="nav-link relative px-4 py-2 overflow-hidden">
+        <span class="relative z-10 font-techno">Nosotros</span>
+    </a>
+    <a href="#blog" class="nav-link relative px-4 py-2 overflow-hidden">
+        <span class="relative z-10 font-techno">Blog</span>
+    </a>
+    <a href="#contacto" class="nav-link relative px-4 py-2 overflow-hidden">
+        <span class="relative z-10 font-techno">Contactanos</span>
+    </a>
 </nav>
 
-<div class="text-center">
-    <div class="text-xl font-bold">LAB BURGER</div>
+<div class="text-center border-x border-black/20 px-4">
+    <div class="text-xl font-bold tracking-widest text-cyan-400">LAB BURGER</div>
 </div>
 
 <div class="hidden md:flex justify-end space-x-5 items-center relative">

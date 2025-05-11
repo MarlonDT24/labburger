@@ -16,3 +16,6 @@
         @include('homeSections.newreview')
     </main>
 @endsection
+@push('scripts')
+    <script type="module" src="{{ Vite::asset('resources/js/nav.js') }}"></script>
+@endpush

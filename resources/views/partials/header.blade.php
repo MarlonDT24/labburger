@@ -1,5 +1,5 @@
 <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
-    <div class="max-w-7xl mx-auto px-2 py-4 grid grid-cols-3 items-center">
+    <div class="max-w-[1900px] mx-auto px-2 py-5 grid grid-cols-3 items-center">
         <!-- Botón hamburguesa cuando sea responsive-->
         <div class="md:hidden">
             <button id="menu-toggle" class="text-gray-700 focus:outline-none">
