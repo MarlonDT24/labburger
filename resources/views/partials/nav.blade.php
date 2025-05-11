@@ -16,13 +16,18 @@
     </a>
 </nav>
 
-<div class="text-center border-x border-black/20 px-4">
-    <div class="text-xl font-bold tracking-widest text-cyan-400">LAB BURGER</div>
+<div class="flex justify-center items-center border-x border-black/10 px-4">
+    <div id="logoContainer" class="relative w-[110px] h-[80px] cursor-pointer">
+        <img src="/img/logo.png" alt="Logo Labburger" class="absolute inset-0 w-full h-full object-contain m-auto" />
+    </div>
 </div>
 
-<div class="hidden md:flex justify-end space-x-5 items-center relative">
-    <a href="/pedido" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition">Realizar Pedido</a>
-    <a href="/reserva" class="bg-gray-200 text-gray-800 px-3 py-1 rounded hover:bg-gray-300 transition">Reservar</a>
+<div class="hidden md:flex justify-end items-center space-x-4">
+    <a id="btnPedido" href="/pedido"
+       class="px-4 py-2 rounded-md text-white bg-gradient-to-r from-red-600 to-red-700 shadow-md transition-transform transform hover:scale-105 font-semibold tracking-wide font-techno">
+       Realizar Pedido
+    </a>
+    <a href="/reserva" class="bg-gray-200 text-gray-800 px-3 py-1 rounded hover:bg-gray-300 transition font-techno">Reservar Mesa</a>
     @if(Auth::check())
         <!-- Botón de usuario con dropdown -->
         <div class="relative group">
@@ -45,7 +50,7 @@
             </div>
         </div>
     @else
-        <a href={{ route('login') }} class="text-blue-600 hover:underline">Iniciar sesión</a>
-        <a href={{ route('signup') }} class="text-blue-600 hover:underline">Registrarse</a>
+        <a href={{ route('login') }} class="text-blue-600 hover:underline font-techno">Iniciar sesión</a>
+        <a href={{ route('signup') }} class="text-blue-600 hover:underline font-techno">Registrarse</a>
     @endauth
 </div>
