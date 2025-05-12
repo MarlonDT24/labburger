@@ -52,3 +52,20 @@
     color: white;
 }
 
+/* Animaciones de Iniciar Sesion y Registrarse */
+.link-underline::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+  .link-underline:hover::after {
+    width: 100%;
+  }
+
+
+

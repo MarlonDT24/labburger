@@ -4,22 +4,22 @@
         <!-- absolute inset-0: posiciona el slide encima del contenedor ocupando todo su espacio -->
         <!-- data-index="0": Índice que se usa para identificar el slide desde JS-->
         <div class="absolute inset-0 transition-opacity duration-1000 opacity-100 slide active" data-index="0">
-            <div class="grid grid-cols-2 items-center h-full px-12">
+            <div class="grid grid-cols-2 items-center h-full px-80">
                 <div class="space-y-6">
-                    <h2 class="text-4xl font-bold">Date un capricho que te lo mereces y pídete una Labb</h2>
+                    <h2 class="text-4xl text-white font-techno">Date un capricho que te lo mereces y pídete una Labb</h2>
                     <div class="space-x-4">
                         <a href="/pedido" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">Realizar Pedido</a>
                         <a href="/reserva" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition">Reservar Mesa</a>
                     </div>
                 </div>
                 <div class="flex justify-center">
-                    <img src="/images/hamburguesa1.png" alt="Hamburguesa" class="h-80">
+                    <img src="/img/burger_labb.jpeg" alt="Hamburguesa" class="h-100">
                 </div>
             </div>
         </div>
 
         <div class="absolute inset-0 transition-opacity duration-1000 opacity-0 slide" data-index="1">
-            <div class="grid grid-cols-3 items-center h-full px-12">
+            <div class="grid grid-cols-3 items-center h-full px-80">
                 <div>
                     <h2 class="text-3xl font-bold mb-2">¡Oferta especial del mes!</h2>
                     <p class="text-lg">Pan brioche, doble carne smash, cheddar, cebolla caramelizada y salsa secreta</p>
@@ -35,7 +35,7 @@
         </div>
 
         <div class="absolute inset-0 transition-opacity duration-1000 opacity-0 slide" data-index="2">
-            <div class="grid grid-cols-2 items-center h-full px-12">
+            <div class="grid grid-cols-2 items-center h-full px-80">
                 <div>
                     <h2 class="text-3xl font-bold mb-4">Crea la hamburguesa del mes a tu gusto</h2>
                     <a href="/crear-hamburguesa" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition">Crear hamburguesa del mes</a>

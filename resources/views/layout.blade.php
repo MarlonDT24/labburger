@@ -15,7 +15,7 @@
 <body class="flex flex-col min-h-screen">
     @include('partials.header')
 
-        <main class="flex-1">
+        <main class="flex-1 pt-[100px]">
         @yield('content')
         </main>
 

@@ -43,10 +43,110 @@ document.addEventListener("DOMContentLoaded", () => {
                 ease: "expo.in",
                 onComplete: () => {
                     window.location.href = "/";
-                }
+                },
             });
         });
     }
 
+    //Animaciones boton Realizar Pedido y Reservar Mesa
+    const pedidoBtn = document.getElementById("btnPedido");
+    if (pedidoBtn) {
+        // Hover con sombreado alrrededor al pasar por encima
+        pedidoBtn.addEventListener("mouseenter", () => {
+            gsap.to(pedidoBtn, {
+                boxShadow: "0 0 12px #0A199F",
+                color: "#fff",
+                duration: 0.1,
+            });
+        });
+
+        // Hover con sombreado alrrededor al dejar de pasar por encima
+        pedidoBtn.addEventListener("mouseleave", () => {
+            gsap.to(pedidoBtn, {
+                boxShadow: "0 0 0 transparent",
+                color: "#D1D5DB",
+                duration: 0.1,
+            });
+        });
+
+        // Pulsación al hacer click
+        pedidoBtn.addEventListener("click", () => {
+            gsap.fromTo(
+                pedidoBtn,
+                { scale: 1 },
+                {
+                    scale: 0.92,
+                    duration: 0.1,
+                    yoyo: true,
+                    repeat: 1,
+                    ease: "power2.inOut",
+                }
+            );
+        });
+    }
+    //Animaciones boton Reservar Mesa
+    const reservaBtn = document.getElementById("btnReserva");
+    if (reservaBtn) {
+        reservaBtn.addEventListener("mouseenter", () => {
+            gsap.to(reservaBtn, {
+                color: "#fff",
+                duration: 0.05,
+            });
+        });
+        reservaBtn.addEventListener("mouseleave", () => {
+            gsap.to(reservaBtn, {
+                color: "#000",
+                duration: 0.05,
+            });
+        });
+
+        // Pulsación
+        reservaBtn.addEventListener("click", () => {
+            gsap.fromTo(
+                reservaBtn,
+                { scale: 1 },
+                {
+                    scale: 0.92,
+                    duration: 0.1,
+                    yoyo: true,
+                    repeat: 1,
+                    ease: "power2.inOut",
+                }
+            );
+        });
+    }
+
+    // Efectos para Iniciar Sesión y Registrarse
+    const loginLinks = document.querySelectorAll(".login-link");
+
+    loginLinks.forEach(link => {
+        // Hover de aumento de visibilidad
+        link.addEventListener("mouseenter", () => {
+            gsap.to(link, { color: "#1D4ED8", fontWeight: "bold", duration: 0.2 }); // azul fuerte
+        });
+        link.addEventListener("mouseleave", () => {
+            gsap.to(link, { color: "#2563EB", fontWeight: "normal", duration: 0.2 }); // azul claro
+        });
+
+        // Efecto de onda al hacer clic
+        link.addEventListener("click", e => {
+            const ripple = document.createElement("span");
+            const rect = link.getBoundingClientRect();
+            const size = Math.max(link.offsetWidth, link.offsetHeight);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.className = "ripple-effect";
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+
+            link.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
 
 });
