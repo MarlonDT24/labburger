@@ -60,3 +60,6 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+    <script type="module" src="{{ Vite::asset('resources/js/login.js') }}"></script>
+@endpush
