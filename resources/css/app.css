@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,13 +6,14 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
 }
 
 /* Tipografía para partes importantes de la pagina */
 .font-techno {
-    font-family: 'Orbitron', sans-serif;
+    font-family: "Orbitron", sans-serif;
 }
 
 .fade-scale-in {
@@ -26,7 +27,7 @@
 
 /* Efecto animacion secciones */
 .nav-link::before {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -62,10 +63,23 @@
     left: 0;
     background-color: currentColor;
     transition: width 0.3s ease;
-  }
-  .link-underline:hover::after {
+}
+.link-underline:hover::after {
     width: 100%;
-  }
+}
 
+/* Enumeracion del slider */
+.step-part {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
+/* Luminosidad y subrayado para los titulo del slider 1 */
+.glow-text {
+    text-shadow: 0 0 6px #ffffffaa, 0 0 10px #ffffff88;
+}
 
+.underline-glow {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-color: #ffffffaa;
+}

@@ -18,4 +18,5 @@
 @endsection
 @push('scripts')
     <script type="module" src="{{ Vite::asset('resources/js/nav.js') }}"></script>
+    <script type="module" src="{{ Vite::asset('resources/js/slider.js') }}"></script>
 @endpush
