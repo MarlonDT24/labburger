@@ -83,3 +83,19 @@
     text-underline-offset: 6px;
     text-decoration-color: #ffffffaa;
 }
+
+/* Boton pedir oferta del slider 2 */
+.btn-oferta {
+  background-color: white;
+  color: #1d4ed8; /* azul tailwind */
+  padding: 0.75rem 2rem;
+  border-radius: 9999px; /* forma circular */
+  font-weight: 600;
+  display: inline-block;
+}
+
+.btn-oferta:hover {
+  background-color: #dc2626; /* rojo tailwind */
+  color: white;
+  transform: scale(1.05);
+}

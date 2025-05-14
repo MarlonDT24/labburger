@@ -17,7 +17,8 @@
         <div class="absolute inset-0 transition-opacity duration-1000 opacity-100 slide active" data-index="0">
             <div class="grid grid-cols-2 items-center h-full px-90">
                 <div class="space-y-8 relative z-20">
-                    <h2 class="text-4xl text-white font-techno leading-snug glow-text">Date el capricho que te mereces y pídete
+                    <h2 class="text-4xl text-white font-techno leading-snug glow-text">Date el capricho que te mereces y
+                        pídete
                         una Labb</h2>
                     <div class="space-x-4">
                         <a href="/pedido"
@@ -38,18 +39,24 @@
 
         <!-- Slider: Pagina 2 -->
         <div class="absolute inset-0 transition-opacity duration-1000 opacity-0 slide" data-index="1">
-            <div class="grid grid-cols-3 items-center h-full px-90">
-                <div>
-                    <h2 class="text-3xl text-white font-bold mb-2 font-techno glow-text">¡Oferta especial!</h2>
-                    <p class="text-lg text-white">Pan brioche, doble carne smash, cheddar, cebolla caramelizada y salsa secreta</p>
-                    <p class="text-xl font-semibold text-red-500 mt-2">Solo 8,95 €</p>
+            <div class="grid grid-cols-2 items-center h-full px-90 gap-12">
+                <!-- Columna 1: Título + descripción -->
+                <div class="space-y-4">
+                    <h2 class="text-3xl text-white font-bold font-techno glow-text">¡Oferta especial!</h2>
+                    <p class="text-lg text-white">Incluye un Combo burguer Labb + burger Exp. Chicken + 2 bebidas + 2
+                        patatas!</p>
+                    <p class="text-xl text-white font-techno glow-text">Tan solo por 30,95 €</p>
                 </div>
-                <div class="flex justify-center">
-                    <img src="/img/hamburguesa2.png" alt="Promo Burger" class="h-80">
-                </div>
-                <div class="text-right">
-                    <a href="/pedido" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">Pedir
-                        Oferta</a>
+                <!-- Columna 2: Imagen + botón al lado -->
+                <div class="flex items-center gap-14 justify-center relative z-20">
+                    <!-- Contenedor de imagen con título encima -->
+                    <div class="relative">
+                        <!-- Título encima -->
+                        <h3 class="text-xl text-white text-center font-techno glow-text underline-glow">Mega Combo Lab</h3>
+                        <img src="/img/products/combos/megacombo.png" alt="Promo Megacombo" class="h-72">
+                    </div>
+                    <!-- Botón al lado -->
+                    <a href="/pedido" class="btn-oferta transition-all duration-300 ease-in-out font-techno">Pedir Oferta</a>
                 </div>
             </div>
         </div>
@@ -58,7 +65,8 @@
         <div class="absolute inset-0 transition-opacity duration-1000 opacity-0 slide" data-index="2">
             <div class="grid grid-cols-2 items-center h-full px-90">
                 <div>
-                    <h2 class="text-3xl text-white font-techno glow-text mb-4">Crea la hamburguesa del mes a tu gusto</h2>
+                    <h2 class="text-3xl text-white font-techno glow-text mb-4">Crea la hamburguesa del mes a tu gusto
+                    </h2>
                     <a href="/crear-hamburguesa"
                         class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition">Crear
                         hamburguesa del mes</a>
@@ -86,9 +94,10 @@
         </div>
 
         <!-- Enumeración lateral hamburguesa vertical -->
-        <div id="burger-steps" class="absolute top-1/2 left-26 transform -translate-y-1/2 flex flex-col items-center gap-3 z-20">
+        <div id="burger-steps"
+            class="absolute top-1/2 left-26 transform -translate-y-1/2 flex flex-col items-center gap-6 z-20">
             <button data-go="0" class="burger-btn">
-                <img src="/img/iconslider/bacon.png" class="step-part w-12 opacity-20 transition-all" />
+                <img src="/img/iconslider/tapa.png" class="step-part w-12 opacity-20 transition-all" />
             </button>
             <button data-go="1" class="burger-btn">
                 <img src="/img/iconslider/cheese.png" class="step-part w-12 opacity-20 transition-all" />
@@ -97,7 +106,7 @@
                 <img src="/img/iconslider/carneburger.png" class="step-part w-12 opacity-20 transition-all" />
             </button>
             <button data-go="3" class="burger-btn">
-                <img src="/img/iconslider/pepinillos.png" class="step-part w-12 opacity-20 transition-all" />
+                <img src="/img/iconslider/base.png" class="step-part w-12 opacity-20 transition-all" />
             </button>
         </div>
     </div>
