@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,13 +6,14 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
 }
 
 /* Tipografía para partes importantes de la pagina */
 .font-techno {
-    font-family: 'Orbitron', sans-serif;
+    font-family: "Orbitron", sans-serif;
 }
 
 .fade-scale-in {
@@ -26,7 +27,7 @@
 
 /* Efecto animacion secciones */
 .nav-link::before {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -62,7 +63,42 @@
     left: 0;
     background-color: currentColor;
     transition: width 0.3s ease;
-  }
-  .link-underline:hover::after {
+}
+.link-underline:hover::after {
     width: 100%;
-  }
+}
+
+/* Enumeracion del slider */
+.step-part {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+#burger-steps-mobile {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Luminosidad y subrayado para los titulo del slider 1 */
+.glow-text {
+    text-shadow: 0 0 6px #ffffffaa, 0 0 10px #ffffff88;
+}
+
+.underline-glow {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-color: #ffffffaa;
+}
+
+/* Boton pedir oferta del slider 2 */
+.btn-oferta {
+  background-color: white;
+  color: #1d4ed8; /* azul tailwind */
+  padding: 0.75rem 2rem;
+  border-radius: 9999px; /* forma circular */
+  font-weight: 600;
+  display: inline-block;
+}
+
+.btn-oferta:hover {
+  background-color: #dc2626; /* rojo tailwind */
+  color: white;
+  transform: scale(1.05);
+}
