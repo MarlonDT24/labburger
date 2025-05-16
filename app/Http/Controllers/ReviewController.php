@@ -12,8 +12,9 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $review = Review::all();
-        return view('reviews.index', compact('review'));
+        //Sacamos las ultimas 9 reseñas escritas
+        $review = Review::with('user')->latest()->take(9)->get();;
+        return view('homeSections.reviews', compact('reviews'));
     }
 
     /**
@@ -21,7 +22,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        return view('reviews.create', compact('review'));
+        return view('reviews.create');
     }
 
     /**
@@ -34,7 +35,7 @@ class ReviewController extends Controller
         $review->comments = $request->input('comments');
         $review->save();
 
-        return redirect()->route('reviews.show', $review->id);
+        return redirect()->route('reviews.index', $review->id);
     }
 
     /**

@@ -17,6 +17,7 @@ class Review extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'avatar_id',
         'user_id',
         'rating',
         'comments',

@@ -27,7 +27,7 @@ const burgerButtons = document.querySelectorAll("#burger-steps .burger-btn, #bur
 let currentIndex = 0;
 let autoInterval;
 
-// 🔍 Obtener los pasos visibles según el dispositivo
+// Obtener los pasos visibles según el dispositivo
 function getVisibleSteps() {
   const container = window.innerWidth < 768
     ? document.querySelector('#burger-steps-mobile')

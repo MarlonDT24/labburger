@@ -18,7 +18,7 @@
     </a>
 </nav>
 
-<div class="flex justify-center items-center  px-4">
+<div class="flex justify-center items-center px-4">
     <div id="logoContainer" class="relative w-[110px] h-[80px] cursor-pointer">
         <img src="/img/logo.png" alt="Logo Labburger" class="absolute inset-0 w-full h-full object-contain m-auto" />
     </div>

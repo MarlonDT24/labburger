@@ -12,14 +12,16 @@
     {{-- Este include es para llamar a las importaciones de javascript para que se renderize mejor --}}
     @include('includes.imports')
 </head>
+
 <body class="flex flex-col min-h-screen overflow-x-hidden">
     @include('partials.header')
 
-        <main class="flex-1 pt-[100px]">
+    <main class="flex-1 pt-[100px]">
         @yield('content')
-        </main>
+    </main>
 
     @include('partials.footer')
 
 </body>
+
 </html>
