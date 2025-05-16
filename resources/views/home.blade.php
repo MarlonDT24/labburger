@@ -5,15 +5,31 @@
 @section('content')
     <main class="flex-1">
         <!-- Slider PRINCIPAL -->
-        @include('homeSections.slider')
+         <section class="w-full">
+            @include('homeSections.slider')
+        </section>
         <!-- Menu PRINCIPAL -->
-        @include('homeSections.menu')
+        <section class="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24">
+            @include('homeSections.menu')
+        </section>
         <!-- Populares PRINCIPAL -->
-        @include('homeSections.populars')
+        <section class="w-full bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-8">
+                @include('homeSections.populars')
+            </div>
+        </section>
         <!-- Reviews PRINCIPAL -->
-        @include('homeSections.reviews')
-        <!-- Crear Review PRINCIPAL -->
-        @include('homeSections.newreview')
+        <section class="w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24">
+                @include('homeSections.reviews')
+            </div>
+        </section>
+        <!-- Nueva Review PRINCIPAL -->
+        <section class="w-full bg-gray-100">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24 py-12">
+                @include('homeSections.newreview')
+            </div>
+        </section>
     </main>
 @endsection
 @push('scripts')

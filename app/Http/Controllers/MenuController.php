@@ -13,5 +13,5 @@ class MenuController extends Controller
         $products_slider = [];
 
         return view('menu.index', compact('products', 'products_slider'));
-    }
+    } 
 }

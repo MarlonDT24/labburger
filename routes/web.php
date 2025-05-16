@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {

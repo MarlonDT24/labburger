@@ -1,41 +1,7 @@
 import './bootstrap';
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Seccion Slider
-    const toggleBtn = document.getElementById('menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
-
-    toggleBtn.addEventListener('click', () => {
-        navMenu.classList.toggle('hidden');
-    });
-
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    let index = 0;
-
-    function showSlide(i) {
-        slides.forEach((slide, idx) => {
-            slide.classList.toggle('opacity-100', idx === i);
-            slide.classList.toggle('opacity-0', idx !== i);
-            slide.classList.toggle('active', idx === i);
-        });
-        index = i;
-    }
-
-    function nextSlide() {
-        showSlide((index + 1) % slides.length);
-    }
-
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            const i = parseInt(dot.dataset.go);
-            showSlide(i);
-        });
-    });
-
-    setInterval(nextSlide, 4000);
-
-    // Seccion Populares
+    // Seccion las Populares
     const burgers = [
         {
             img: "/images/popular1.png",
@@ -113,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(() => {
         burgerIndex = (burgerIndex + 1) % burgers.length;
         loadBurger(burgerIndex);
-    }, 10000);
+    }, 7000);
 
     loadBurger(0);
 });

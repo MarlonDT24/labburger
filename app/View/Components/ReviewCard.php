@@ -8,12 +8,19 @@ use Illuminate\Contracts\View\View;
 
 class ReviewCard extends Component
 {
+    public string $user;
+    public string $avatar;
+    public string $review;
+    public int $stars;
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($user = 'not found', $avatar = '', $review = 'not found', $stars = 0)
     {
-        //
+        $this->user = $user;
+        $this->avatar = $avatar;
+        $this->review = $review;
+        $this->stars = $stars;
     }
 
     /**
