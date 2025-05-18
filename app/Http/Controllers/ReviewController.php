@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -12,8 +13,9 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $review = Review::all();
-        return view('reviews.index', compact('review'));
+        //Sacamos las ultimas 9 reseñas escritas
+        $reviews = Review::with('user')->latest()->take(9)->get();;
+        return view('homeSections.reviews', compact('reviews'));
     }
 
     /**
@@ -21,7 +23,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        return view('reviews.create', compact('review'));
+        return view('reviews.create');
     }
 
     /**
@@ -30,11 +32,12 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         $review = new Review();
+        $review->user_id = Auth::id();
         $review->rating = $request->input('rating');
         $review->comments = $request->input('comments');
         $review->save();
 
-        return redirect()->route('reviews.show', $review->id);
+        return redirect()->route('reviews.index');
     }
 
     /**

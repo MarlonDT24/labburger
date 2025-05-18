@@ -106,5 +106,5 @@ burgerButtons.forEach((btn) => {
 });
 
 // Init
-showSlide(1);
+showSlide(0);
 startAutoSlide();

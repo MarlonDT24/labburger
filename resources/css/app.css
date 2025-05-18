@@ -80,6 +80,9 @@
 .glow-text {
     text-shadow: 0 0 6px #ffffffaa, 0 0 10px #ffffff88;
 }
+.glow-blue {
+    text-shadow: 0 0 6px #5d65b9aa, 0 0 10px #0c21d788;
+}
 
 .underline-glow {
     text-decoration: underline;
@@ -101,4 +104,15 @@
   background-color: #dc2626; /* rojo tailwind */
   color: white;
   transform: scale(1.05);
+}
+
+/* Perspectiva 3D del carrousel de las reviews del home */
+.perspective-3d {
+    perspective: 1200px;
+    perspective-origin: center;
+}
+
+#carousel-inner {
+    transform-style: preserve-3d;
+    position: relative;
 }

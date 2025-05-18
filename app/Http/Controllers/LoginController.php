@@ -20,12 +20,13 @@ class LoginController extends Controller
     public function signup(SignupRequest $request): RedirectResponse
     {
         $user = new User();
+        $user->avatar = '/img/iconuser.png';
         $user->name = $request->get('name');
         $user->surname = $request->get('surname');
         $user->phone = $request->get('phone');
         $user->email = $request->get('email');
         $user->password = Hash::make($request->get('password'));
-        $user->type = $request->get('type');
+        $user->type = 'cliente';
         $user->save();
 
         Auth::login($user);

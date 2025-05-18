@@ -30,6 +30,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User();
+        $user->avatar = $request->input('avatar');
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');
         $user->phone = $request->input('phone');
@@ -62,6 +63,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $user->avatar = $request->input('avatar');
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');
         $user->phone = $request->input('phone');
@@ -78,6 +80,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        
+
     }
 }

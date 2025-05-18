@@ -24,7 +24,7 @@
             <div class="relative">
                 <div id="reviewContainer" class="overflow-hidden h-32 relative">
                     <div class="transition-all duration-500" id="reviewSlider">
-                        
+
                     </div>
                 </div>
                 <button id="nextReview" class="absolute right-0 top-1/2 transform -translate-y-1/2 text-white text-2xl">⬇</button>

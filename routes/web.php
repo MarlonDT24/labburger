@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,6 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout')->middl
 
 //Rutas de la carta
 Route::get('/carta', [MenuController::class, 'index'])->name('menu.index');
+
+//Rutas de las reseñas
+Route::resource('reviews', ReviewController::class);
