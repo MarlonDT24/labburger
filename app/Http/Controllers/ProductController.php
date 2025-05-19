@@ -31,9 +31,10 @@ class ProductController extends Controller
     {
         $product = new product();
         $product->name = $request->input('name');
-        $product->price = $request->input('price');
-        $product->description = $request->input('description');
         $product->image = $request->input('image');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->rating = $request->input('rating');
         $product->allergens = $request->input('allergens');
         $product->save();
 
@@ -62,9 +63,10 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $product->name = $request->input('name');
-        $product->price = $request->input('price');
-        $product->description = $request->input('description');
         $product->image = $request->input('image');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->rating = $request->input('rating');
         $product->allergens = $request->input('allergens');
         $product->save();
 

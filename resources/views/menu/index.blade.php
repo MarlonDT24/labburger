@@ -1,30 +1,35 @@
+@
+
 @extends('layout')
 
 @section('title', 'Carta')
 
 @section('content')
     <!-- Hero Section -->
-    <section class="bg-gray-100 py-10 relative">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h1 class="text-4xl font-bold text-gray-900">CARTA</h1>
-            <p class="text-sm text-gray-600 mt-2">Inicio > Carta</p>
+    <section class="relative p-22 bg-cover bg-center bg-no-repeat bg-[url('/public/img/fondoslider.jpg')]">
+        <div class="max-w-7xl mx-auto px-4 text-left">
+            <h1 class="text-5xl font-bold text-white font-techno glow-text">CARTA</h1>
+            <p class="text-sm text-gray-400 mt-2 font-techno">Inicio > Carta</p>
             <!-- Mejora visual: Añadir íconos de decoración o una frase destacada -->
-            <p class="text-md text-blue-800 italic mt-4">Descubre nuestras creaciones más sabrosas, ¡elige tu favorita!</p>
+            <p class="text-lg text-blue-200 italic mt-4">Descubre nuestras creaciones más sabrosas, ¡Elige tu favorita!</p>
         </div>
     </section>
 
     <!-- Categorías -->
     <section class="bg-white py-10">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6">Nuestros mejores productos</h2>
-            <div class="flex justify-center flex-wrap gap-4">
-                @foreach (['Combos', 'Labburgers', 'Entrantes', 'Postres', 'Salsas', 'Bebidas'] as $categoria)
+            <h2 class="text-3xl font-bold text-blue-800 mb-6 font-techno glow-blue">Nuestros mejores productos</h2>
+            <p class="text-sm text-gray-500 mt-2 mb-4 font-techno">Todos los productos tienen una calificación 100% objetiva
+                por parte de nuestros clientes</p>
+            <div id="container-categories" class="flex justify-center flex-wrap gap-4">
+                @foreach ($categories as $category)
                     <button
-                        class="border-t-4 border-b-4 border-transparent hover:border-blue-400 transition px-4 py-2 text-gray-700 font-semibold category-btn"
-                        data-category="{{ strtolower($categoria) }}">
-                        <img src="/images/icons/{{ strtolower($categoria) }}.png" alt="{{ $categoria }}"
-                            class="w-10 h-10 mx-auto mb-1">
-                        {{ $categoria }}
+                        id={{ $category->id}}
+                        class="border-t-4 border-b-4 border-transparent hover:border-blue-800 transition px-4 py-2 text-gray-700 font-semibold category-btn"
+                        data-category={{ $category->name }}>
+                        <img src="{{ url($category->icon) }}" alt="{{ $category->name }}"
+                            class="w-20 h-20 mx-auto mb-1">
+                        {{ $category->name }}
                     </button>
                 @endforeach
             </div>

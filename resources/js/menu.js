@@ -23,3 +23,17 @@ document.querySelectorAll('.category-btn').forEach(btn => {
         // Aquí puedes luego cargar vía AJAX o cambiar datos PHP
     });
 });
+
+
+document.querySelectorAll('.container-categories').forEach(async category => {
+    const id = category.id
+
+    const baseUrl = process.env.APP_URL
+    const response = await fetch(baseUrl + '/api/categories')
+
+    response.then((result) => {
+        
+    }).catch((err) => {
+        console.log('Error al cargar las categorias' + err);
+    });
+})
