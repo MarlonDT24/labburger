@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     {{-- Api para la fuente futurista de la pagina web --}}
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
@@ -15,6 +16,9 @@
     @stack('scripts')
     {{-- Este include es para llamar a las importaciones de javascript para que se renderize mejor --}}
     @include('includes.imports')
+    <script>
+        window.isAdmin = {{ Auth::check() && Auth::user()->type === 'administrador' ? 'true' : 'false' }};
+    </script>
 </head>
 
 <body class="flex flex-col min-h-screen overflow-x-hidden">

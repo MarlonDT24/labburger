@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
+        $products = Product::all();
         return view('products.index', compact('products'));
     }
 
@@ -30,47 +31,90 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new product();
+        $product->category_id = $request->input('category_id');
         $product->name = $request->input('name');
-        $product->image = $request->input('image');
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->rating = $request->input('rating');
         $product->allergens = $request->input('allergens');
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+
+            // Buscar el nombre de la categoría
+            $category = Category::find($request->input('category_id'));
+            $folder = strtolower($category->name); // ej: "Burgers" → "burgers"
+
+            // Ruta completa
+            $path = public_path("img/products/{$folder}");
+
+            // Crear carpeta si no existe
+            if (!file_exists($path)) {
+                mkdir($path, 0755, true);
+            }
+
+            // Mover archivo
+            $file->move($path, $filename);
+            $product->image = "/img/products/{$folder}/{$filename}";
+        }
         $product->save();
 
-        return redirect()->route('products.show', $product->id);
+        return redirect()->route('menu.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
-    {
-        return view('products.show', compact('product'));
-    }
+    // public function show(Product $product)
+    // {
+    //     return view('products.show', compact('product'));
+    // }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Product $product)
-    {
-        return view('products.edit', compact('product'));
-    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Product $product)
     {
-        $product->name = $request->input('name');
-        $product->image = $request->input('image');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
-        $product->rating = $request->input('rating');
-        $product->allergens = $request->input('allergens');
+        // $product->category_id = $request->input('category_id');
+        $product->name = $request->input('name') ?? null;
+        $product->description = $request->input('description') ?? null;
+        $product->price = $request->input('price') ?? null;
+        $product->rating = $request->input('rating') ?? null;
+        $product->allergens = $request->input('allergens') ?? null;
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+
+            // Buscar el nombre de la categoría
+            $category = Category::find($request->input('category_id'));
+            $folder = strtolower($category->name); // ej: "Burgers" → "burgers"
+
+            // Ruta completa
+            $path = public_path("img/products/{$folder}");
+
+            // Crear carpeta si no existe
+            if (!file_exists($path)) {
+                mkdir($path, 0755, true);
+            }
+
+            // Mover archivo
+            $file->move($path, $filename);
+            $product->image = "/img/products/{$folder}/{$filename}";
+        }
+
         $product->save();
 
-        return redirect()->route('products.show', $product->id);
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Producto actualizado',
+                'product' => $product,
+            ]);
+        }
+        return redirect()->route('menu.index');
     }
 
     /**
@@ -79,6 +123,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index');
+        return redirect()->route('menu.index');
     }
 }
