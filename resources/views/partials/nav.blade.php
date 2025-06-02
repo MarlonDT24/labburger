@@ -7,12 +7,24 @@
     <a href="{{ route('menu.index') }}" class="nav-link relative px-4 py-2 overflow-hidden block">
         <span class="relative z-10 font-techno">Carta</span>
     </a>
-    <a href="#nosotros" class="nav-link relative px-4 py-2 overflow-hidden">
+    <a href="{{ route('about.index') }}" class="nav-link relative px-4 py-2 overflow-hidden">
         <span class="relative z-10 font-techno">Nosotros</span>
     </a>
-    <a href="#blog" class="nav-link relative px-4 py-2 overflow-hidden">
-        <span class="relative z-10 font-techno">Blog</span>
-    </a>
+    @auth
+        @if (Auth::user()->type === 'administrador')
+            <a href="{{ route('articles.create') }}" class="nav-link relative px-4 py-2 overflow-hidden">
+                <span class="relative z-10 font-techno">Administrar Blog</span>
+            </a>
+        @else
+            <a href="{{ route('articles.index') }}" class="nav-link relative px-4 py-2 overflow-hidden">
+                <span class="relative z-10 font-techno">Blog</span>
+            </a>
+        @endif
+    @else
+        <a href="{{ route('articles.index') }}" class="nav-link relative px-4 py-2 overflow-hidden">
+            <span class="relative z-10 font-techno">Blog</span>
+        </a>
+    @endauth
     <a href="#contacto" class="nav-link relative px-4 py-2 overflow-hidden">
         <span class="relative z-10 font-techno">Contactanos</span>
     </a>
@@ -26,8 +38,18 @@
 
 <div class="flex flex-row justify-end gap-15">
     <div class="hidden md:flex justify-end items-center space-x-5">
-        <x-button url="/realizar-pedido" isPrimary="true">Realizar Pedido</x-button>
-        <x-button url="/reservar-mesa">Resevar Mesa</x-button>
+        @auth
+            @if (Auth::user()->type === 'administrador')
+                <x-button url="{{ route('orders.admin') }}">Administrar Pedidos</x-button>
+                <x-button url="#">Gestionar Mesas</x-button> {{-- Añadir ruta real luego --}}
+            @else
+                <x-button url="{{ route('orders.create') }}" isPrimary="true">Realizar Pedido</x-button>
+                <x-button url="{{ route('reservations.create') }}">Resevar Mesa</x-button>
+            @endif
+        @else
+            <x-button url="{{ route('orders.create') }}" isPrimary="true">Realizar Pedido</x-button>
+            <x-button url="{{ route('reservations.create') }}">Reservar Mesa</x-button>
+        @endauth
     </div>
 
     <div class="flex justify-center items-center">
@@ -36,13 +58,16 @@
             <div class="relative group">
                 <button class="flex items-center space-x-2 text-gray-800 font-semibold focus:outline-none">
                     <!-- Avatar redondo -->
-                    <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="w-11 h-11 rounded-full object-cover border border-gray-600">
+                    <img src="{{ Auth::user()->avatar }}" alt="Avatar"
+                        class="w-11 h-11 rounded-full object-cover border border-gray-600">
                     <span>{{ Auth::user()->name }} {{ Auth::user()->surname }}</span>
                 </button>
                 <!-- Menu desplegable -->
-                <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-md invisible opacity-0 group-hover:visible group-hover:opacity-100 transition duration-200 z-50">
-                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-600">Mi perfil</a>
-                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-600">Mis pedidos</a>
+                <div
+                    class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-md invisible opacity-0 group-hover:visible group-hover:opacity-100 transition duration-200 z-50">
+                    <a href="{{ route('users.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-blue-600">Mi perfil</a>
+                    <a href="{{ route('orders.user') }}" class="block px-4 py-2 text-gray-700 hover:bg-blue-600">Mis pedidos</a>
+                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-600">Mis reservas</a>
                     <form action="{{ route('logout') }}" method="POST" class="block">
                         @csrf
                         <button type="submit" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-400">Cerrar
@@ -52,13 +77,15 @@
             </div>
         @else
             <div class="flex items-center space-x-3">
-                <a href="{{ route('login') }}" class="relative text-blue-600 link-underline px-2 login-link font-techno">
+                <a href="{{ route('login') }}"
+                    class="relative text-blue-600 link-underline px-2 login-link font-techno">
                     Iniciar sesión
                 </a>
-                <a href="{{ route('signup') }}" class="relative text-blue-600 link-underline px-2 login-link font-techno">
+                <a href="{{ route('signup') }}"
+                    class="relative text-blue-600 link-underline px-2 login-link font-techno">
                     Registrarse
                 </a>
             </div>
         @endauth
-    </div>
+</div>
 </div>

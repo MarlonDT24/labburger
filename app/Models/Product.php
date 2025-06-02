@@ -34,14 +34,14 @@ class Product extends Model
         return $this->belongsToMany(Order::class)->withPivot('quantity', 'total_price')->withTimestamps();
     }
 
+    // Relación de los Products con las Categories(1:N)
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
     //Relación de la hamburguesa del mesa con un solo producto Orders(1:1)
     public function monthBurger(): HasOne
     {
         return $this->hasOne(MonthBurger::class);
-    }
-
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(Category::class);
     }
 }

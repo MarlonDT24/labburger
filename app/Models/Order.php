@@ -18,24 +18,39 @@ class Order extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'product_id',
+        'user_id',
+        'name',
+        'surname',
+        'address',
+        'portal',
+        'door',
+        'notes',
+        'email',
+        'phone',
+        'payment_method',
         'state',
         'delivery_method',
         'date',
+        //Datos del metodo de pago
+        'card_number',
+        'card_name',
+        'card_expiration',
+        'card_cvc',
+        'paypal_email',
+        'bank_owner',
+        'bank_iban',
     ];
 
     //Relación de todos los Products con los Orders(N:M)
-    public function product(): BelongsToMany
+    public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class)->withPivot('quantity', 'total_price')->withTimestamps();
     }
-
     //Relación del User que ha creado el Order(1:N)
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
-
     //Función para calcular el precio total de los productos del pedido
     public function totalPrice()
     {

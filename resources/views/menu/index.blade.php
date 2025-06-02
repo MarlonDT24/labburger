@@ -38,8 +38,9 @@
             <div class="flex items-center justify-center gap-6 mb-10">
                 <!-- Con gradient agregas una linea -->
                 <div class="w-100 h-1 bg-gradient-to-r from-blue-300 via-blue-600 to-blue-300 rounded-full shadow-md"></div>
-                <h3 id="categoria-titulo" class="text-3xl font-bold text-center text-blue-800 font-techno glow-blue">
-                    {{ $category->name }}</h3>
+                <h3 id="categoria-titulo" class="text-3xl font-bold text-center text-blue-800 font-techno glow-blue invisible">
+                    <!-- el js rellenara el nombre -->
+                </h3>
                 <div class="w-100 h-1 bg-gradient-to-r from-blue-300 via-blue-600 to-blue-300 rounded-full shadow-md"></div>
             </div>
             {{-- Solo el administrador puede añadir, eliminar o modificar un producto --}}
@@ -52,7 +53,7 @@
                 </div>
 
                 <div id="product-form" class="max-w-3xl mx-auto p-13 bg-gray-100 rounded-lg shadow hidden">
-                    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('products.store') }}" method= "POST" enctype="multipart/form-data">
                         @csrf
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>

@@ -13,8 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('products.index', compact('products'));
+        //Ya se visualizan los productos en el MenuController
     }
 
     /**
@@ -22,7 +21,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        /* No hace falta crear un formulario para añadir productos,
+         ya que se hace desde el menú y con el metodo store() */
     }
 
     /**
@@ -41,19 +41,15 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
-
             // Buscar el nombre de la categoría
             $category = Category::find($request->input('category_id'));
             $folder = strtolower($category->name); // ej: "Burgers" → "burgers"
-
             // Ruta completa
             $path = public_path("img/products/{$folder}");
-
             // Crear carpeta si no existe
             if (!file_exists($path)) {
                 mkdir($path, 0755, true);
             }
-
             // Mover archivo
             $file->move($path, $filename);
             $product->image = "/img/products/{$folder}/{$filename}";
@@ -77,7 +73,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        // $product->category_id = $request->input('category_id');
         $product->name = $request->input('name') ?? null;
         $product->description = $request->input('description') ?? null;
         $product->price = $request->input('price') ?? null;
@@ -90,16 +85,13 @@ class ProductController extends Controller
 
             // Buscar el nombre de la categoría
             $category = Category::find($request->input('category_id'));
-            $folder = strtolower($category->name); // ej: "Burgers" → "burgers"
-
+            $folder = strtolower($category->name); //ej: "Burgers" → "burgers"
             // Ruta completa
             $path = public_path("img/products/{$folder}");
-
             // Crear carpeta si no existe
             if (!file_exists($path)) {
                 mkdir($path, 0755, true);
             }
-
             // Mover archivo
             $file->move($path, $filename);
             $product->image = "/img/products/{$folder}/{$filename}";
@@ -107,10 +99,10 @@ class ProductController extends Controller
 
         $product->save();
 
+        // Como la petición es AJAX, devuelve una respuesta JSON
         if ($request->ajax()) {
             return response()->json([
                 'status' => 'success',
-                'message' => 'Producto actualizado',
                 'product' => $product,
             ]);
         }

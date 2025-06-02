@@ -10,11 +10,9 @@ class MenuController extends Controller
 {
     public function index()
     {
-        // Luego reemplazarás esto con productos de la base de datos
-        $products = [];
-        $products_slider = Product::latest()->take(6)->get();
+        $products = Product::all();
         $categories = Category::all();
 
-        return view('menu.index', compact('categories', 'products_slider'));
+        return view('menu.index', compact('products', 'categories'));
     }
 }

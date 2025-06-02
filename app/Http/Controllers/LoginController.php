@@ -31,7 +31,7 @@ class LoginController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('auth.login');
+        return redirect()->route('home');
     }
 
     public function loginForm(): View|RedirectResponse

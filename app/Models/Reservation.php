@@ -18,9 +18,14 @@ class Reservation extends Model
      */
     protected $fillable = [
         'user_id',
+        'name',
+        'surname',
+        'phone',
+        'email',
         'date',
         'hour',
         'number_people',
+        'message',
     ];
 
     //Relación del User que ha creado la Reservation(1:N)
