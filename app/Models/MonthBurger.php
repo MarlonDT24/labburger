@@ -17,13 +17,14 @@ class Monthburger extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'product_id',
-        'date',
+        'name',
+        'description',
         'ingredients',
     ];
 
-    public function product(): HasOne
-    {
-        return $this->hasOne(Product::class);
-    }
+    protected $casts = [
+        //De esa manera se pueden manejar los ingredientes como un array json
+        'ingredients' => 'array',
+    ];
+
 }

@@ -12,16 +12,16 @@
 
         <!-- Slide 1 -->
         <div class="absolute inset-0 transition-opacity duration-1000 opacity-100 slide active" data-index="0">
-            <div class="grid grid-cols-1 md:grid-cols-2 items-center h-full px-15 md:px-24 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 items-center h-full px-15 md:px-52 gap-10">
                 <div class="space-y-6 text-center md:text-left">
                     <h2 class="text-3xl md:text-4xl text-white font-techno leading-snug glow-text">
                         Date el capricho que te mereces y pídete una Labb
                     </h2>
                     <div class="flex justify-center md:justify-start gap-4">
-                        <a href="/pedido"
+                        <a href="{{ route('orders.create') }}"
                             class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-red-700 transition font-techno">Realizar
                             Pedido</a>
-                        <a href="/reserva"
+                        <a href="{{ route('reservations.create') }}"
                             class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition font-techno">Reservar
                             Mesa</a>
                     </div>
@@ -36,7 +36,7 @@
 
         <!-- Slide 2 -->
         <div class="absolute inset-0 transition-opacity duration-1000 opacity-0 slide" data-index="1">
-            <div class="grid grid-cols-1 md:grid-cols-2 items-center h-full px-6 md:px-24 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 items-center h-full px-6 md:px-52 gap-10">
                 <div class="space-y-4 text-center md:text-left">
                     <h2 class="text-3xl md:text-4xl text-white font-bold font-techno glow-text">¡Oferta especial!</h2>
                     <p class="text-base md:text-lg text-white">Incluye un Combo burguer Labb + burger Exp. Chicken + 2
@@ -49,21 +49,35 @@
                             Mega Combo Lab</h3>
                         <img src="/img/products/combos/megacombo.png" alt="Promo Megacombo" class="h-48 md:h-72">
                     </div>
-                    <a href="/pedido" class="btn-oferta transition-all duration-300 ease-in-out font-techno">Pedir
-                        Oferta</a>
+                    <button
+                        class="order-now-btn btn-oferta transition-all duration-300 ease-in-out font-techno"
+                        data-id="999"
+                        data-name="Mega Combo Lab"
+                        data-price="30.95"
+                        data-image="/img/products/combos/megacombo.png">
+                        Pedir Oferta
+                    </button>
                 </div>
             </div>
         </div>
 
         <!-- Slide 3 -->
         <div class="absolute inset-0 transition-opacity duration-1000 opacity-0 slide" data-index="2">
-            <div class="grid grid-cols-1 md:grid-cols-2 items-center h-full px-6 md:px-24 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 items-center h-full px-6 md:px-52 gap-10">
                 <div class="space-y-4 text-center md:text-left">
                     <h2 class="text-3xl md:text-4xl text-white font-techno glow-text mb-4">Crea la hamburguesa del mes a
                         tu gusto</h2>
-                    <a href="/crear-hamburguesa"
-                        class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition font-techno">Crear
-                        hamburguesa del mes</a>
+                    @auth
+                        <a href="{{ route('monthburgers.create') }}"
+                            class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition font-techno">
+                            Crear hamburguesa del mes
+                        </a>
+                    @else
+                        <span class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition font-techno">
+                            Crear hamburguesa del mes
+                        </span>
+                        <div class="text-xs mt-5 text-white">Inicia sesión para crear la Hamburguesa del Mes</div>
+                    @endauth
                 </div>
                 <div class="flex flex-col items-center space-y-4">
                     <h3 class="text-lg md:text-xl text-white font-techno glow-text underline-glow">Adn Laex</h3>
@@ -75,22 +89,28 @@
 
         <!-- Slide 4 -->
         <div class="absolute inset-0 transition-opacity duration-1000 opacity-0 slide" data-index="3">
-            <div class="h-full flex items-center justify-center
-            px-4 sm:px-10 md:px-24">
-                <div class="flex flex-col gap-5 w-full
-                    lg:items-center">
-                    <x-review-card user="Pablo Hernandez" stars=3 description='Muy rica papuuu'></x-review-card>
-                    <x-review-card user="Chupa Melano" stars=5 description='Muy rica papuuu'></x-review-card>
-                    <x-review-card user="Carlo Mmverga mushagrasia" stars=1 description='Muy rica papuuu'></x-review-card>
+            <div class="h-full flex items-center justify-center px-4 sm:px-10 md:px-52">
+                <div id="slider4-reviews-wrapper" class="h-[400px] px-70 overflow-hidden flex items-center justify-center">
+                    <div id="slider4-reviews" class="flex flex-col gap-5 w-full max-w-lg mx-auto">
+                        @foreach($reviewsSlider as $review)
+                            <x-review-card
+                                user="{{ $review->user->name }}"
+                                avatar="{{ $review->user->avatar ?? '/images/default-avatar.png' }}"
+                                comments="{{ $review->comments }}"
+                                rating="{{ $review->rating }}"
+                                product="{{ $review->product->name ?? null }}"
+                            />
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
 
-    </div>
+
     <!-- Enumeración lateral hamburguesa vertical -->
     <div class="z-30">
         <div id="burger-steps"
-            class="hidden md:flex absolute top-1/2 left-6 transform -translate-y-1/2 flex-col items-center gap-6 z-20">
+            class="hidden md:flex absolute top-1/2 left-16 transform -translate-y-1/2 flex-col items-center gap-6 z-20">
             <button data-go="0" class="burger-btn">
                 <img src="/img/iconslider/tapa.png" class="step-part w-10 md:w-12 opacity-20 transition-all" />
             </button>
@@ -119,5 +139,6 @@
                 <img src="/img/iconslider/base.png" class="step-part w-8 opacity-20 transition-all" />
             </button>
         </div>
+    </div>
     </div>
 </section>

@@ -25,9 +25,18 @@
             <span class="relative z-10 font-techno">Blog</span>
         </a>
     @endauth
-    <a href="#contacto" class="nav-link relative px-4 py-2 overflow-hidden">
-        <span class="relative z-10 font-techno">Contactanos</span>
-    </a>
+     @auth
+        <!-- Botón activo para usuarios logueados -->
+        <a href="{{ route('monthburgers.create') }}" class="nav-link relative px-4 py-2 overflow-hidden">
+            <span class="relative z-10 font-techno">Crear Hamburguesa del Mes</span>
+        </a>
+    @else
+        <!-- Botón desactivado para invitados -->
+        <div class="relative px-4 py-2 overflow-hidden text-gray-400">
+            <span class="relative z-10 font-techno">Crear Hamburguesa del Mes</span>
+            <div class="text-xs mt-1 text-blue-700">Regístrate para crear la Hamburguesa del Mes</div>
+        </div>
+    @endauth
 </nav>
 
 <div class="flex justify-center items-center px-4">

@@ -4,16 +4,17 @@
         <div class="flex-grow border-t border-white/30"></div>
     </div>
 
-    <div id="review-carousel" class="relative perspective-3d h-[430px] overflow-visible">
-        <div id="carousel-inner" class="w-full h-full relative">
-            {{-- @foreach($reviews as $review)
+    <div id="review-carousel" class="relative overflow-hidden h-[450px]">
+        <div id="carousel-inner" class="absolute top-0 left-0 w-full">
+            @foreach($reviews as $review)
                 <x-review-card
                     user="{{ $review->user->name }}"
                     avatar="{{ $review->user->avatar ?? '/images/default-avatar.png' }}"
-                    rating="{{ $review->rating }}"
                     comments="{{ $review->comments }}"
+                    rating="{{ $review->rating }}"
+                    product="{{ $review->product->name ?? null }}"
                 />
-            @endforeach --}}
+            @endforeach
         </div>
     </div>
 </section>

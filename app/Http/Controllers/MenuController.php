@@ -12,6 +12,7 @@ class MenuController extends Controller
     {
         $products = Product::all();
         $categories = Category::all();
+        
 
         return view('menu.index', compact('products', 'categories'));
     }

@@ -1,4 +1,3 @@
-// slider.js
 import { gsap } from "gsap";
 
 // Ingredientes flotantes que siguen el cursor
@@ -91,7 +90,7 @@ function startAutoSlide() {
   autoInterval = setInterval(() => {
     const nextIndex = (currentIndex + 1) % slides.length;
     showSlide(nextIndex);
-  }, 5000);
+  }, 7000);
 }
 
 // Interacción manual

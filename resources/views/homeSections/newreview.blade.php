@@ -3,6 +3,10 @@
 
         <!-- COLUMNA IZQUIERDA -->
         <div class="space-y-6 text-center md:text-center">
+            @auth
+            <h2 class="text-2xl font-bold text-blue-700 font-techno glow-text">Valora nuestra hamburguesería</h2>
+            <p class="text-black text-lg">Cualquier tipo de reseña es valorada con mucho gusto!</p>
+            @else
             <h2 class="text-2xl font-bold text-blue-700 font-techno glow-text">Valora nuestra hamburguesería</h2>
             <p class="text-black text-lg">Regístrate en nuestra página para dejar una reseña</p>
             <p class="text-gray-600">Las leeremos con mucho gusto</p>
@@ -12,6 +16,7 @@
                 <a href="{{ route('signupForm') }}"
                    class="bg-gray-300 text-gray-800 font-semibold px-4 py-2 rounded hover:bg-gray-400 transition font-techno">Registrarse</a>
             </div>
+            @endauth
         </div>
 
         <!-- COLUMNA DERECHA -->
@@ -28,6 +33,16 @@
 
                 <form action="{{ route('reviews.store') }}" method="POST" class="space-y-4">
                     @csrf
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Producto (opcional)</label>
+                        <select name="product_id"
+                            class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500">
+                            <option value="">Reseña general</option>
+                            @foreach($products as $product)
+                                <option value="{{ $product->id }}">{{ $product->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Puntuación</label>
                         <select name="rating"

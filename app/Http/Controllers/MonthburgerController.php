@@ -30,12 +30,12 @@ class MonthburgerController extends Controller
     public function store(Request $request)
     {
         $monthburger = new Monthburger();
-        $monthburger->product_id = $request->input('product_id');
-        $monthburger->date = $request->input('date');
+        $monthburger->name = $request->input('name');
+        $monthburger->description = $request->input('description');
         $monthburger->ingredients = $request->input('ingredients');
         $monthburger->save();
 
-        return redirect()->route('monthburgers.show', $monthburger->id);
+        return redirect()->route('monthburgers.index');
     }
 
     /**

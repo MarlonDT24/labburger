@@ -5,7 +5,7 @@
 @section('content')
         <!-- Slider PRINCIPAL -->
          <section class="w-full">
-            @include('homeSections.slider')
+            @include('homeSections.slider', ['reviewsSlider' => $reviewsSlider])
         </section>
         <!-- Menu PRINCIPAL -->
         <section class="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24 my-12">
@@ -19,13 +19,13 @@
         </section>
         <!-- Reviews PRINCIPAL -->
         <section class="w-full mt-20">
-                @include('homeSections.reviews')
+                @include('homeSections.reviews', ['reviews' => $reviewsHome])
         </section>
         <!-- Nueva Review PRINCIPAL -->
-        @include('homeSections.newreview')
+        @include('homeSections.newreview', ['products' => $products])
 @endsection
 
 @push('scripts')
     <script type="module" src="{{ Vite::asset('resources/js/slider.js') }}"></script>
-    <script type="module" src="{{ Vite::asset('resources/js/reviews.js') }}"></script>
+    <script type="module" src="{{ Vite::asset('resources/js/populars.js') }}"></script>
 @endpush

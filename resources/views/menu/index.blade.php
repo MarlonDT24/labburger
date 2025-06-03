@@ -109,6 +109,3 @@
 
 
 @endsection
-@push('scripts')
-    <script type="module" src="{{ Vite::asset('resources/js/menu.js') }}"></script>
-@endpush

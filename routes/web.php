@@ -9,13 +9,13 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\MonthburgerController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Rutas de perfil de usuario
 Route::middleware('auth')->group(function () {
@@ -79,3 +79,9 @@ Route::middleware('auth')->group(function () {
 /* Route::middleware('auth')->group(function () {
     Route::post('/blog/{post}/comment', [CommentController::class, 'store'])->name('comments.store');
 }); */
+
+// Rutas crear las hamburguesas del mes
+Route::middleware('auth')->group(function () {
+    Route::resource('monthburgers', MonthburgerController::class)->except(['edit', 'update', 'destroy']);
+});
+

@@ -135,7 +135,13 @@ async function renderProducts(categoryId) {
                     <p class="text-sm text-gray-400 font-bold text-center">${product.description ?? ""}</p>
                     <div class="text-center mt-2 text-white font-bold">${product.price}€</div>
                     <div class="flex justify-center mt-2">
-                        <button class="bg-white text-blue-700 py-3 px-5 rounded-full text-sm font-bold hover:bg-gray-400 transition">PEDIR AHORA</button>
+                        <button class="order-now-btn bg-white text-blue-700 py-3 px-5 rounded-full text-sm font-bold hover:bg-gray-400 transition"
+                            data-id="${product.id}"
+                            data-name="${product.name}"
+                            data-price="${product.price}"
+                            data-image="${product.image}">
+                            PEDIR AHORA
+                        </button>
                     </div>
                     <div class="bg-white px-2 rounded-lg absolute top-2 right-2 flex space-x-1 text-yellow-500">
                         ${"★".repeat(product.rating)}${"☆".repeat(5 - product.rating)} ${product.rating}
@@ -190,6 +196,12 @@ async function getDataProducts(categoryId) {
         });
 }
 
+function getInitialCategoryId() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category');
+    return categoryParam ? parseInt(categoryParam) : 1;
+}
+
 function render() {
     const categoriesButtons = document.querySelectorAll(".category-btn");
 
@@ -202,14 +214,40 @@ function render() {
         document.getElementById("product-form").classList.toggle("hidden");
     });
 
-    // Al cargar la página, mostrar los combos (ID 1)
-    const defaultCategoryId = 1;
-    const defaultCategoryButton = document.querySelector(`.category-btn[data-id="${defaultCategoryId}"]`);
-    if (defaultCategoryButton) {
-        handleClickCategory({ currentTarget: defaultCategoryButton });
+    //Aquí modificamos el default para coger el parámetro
+    const initialCategoryId = getInitialCategoryId();
+
+
+    const initialCategoryButton = document.querySelector(`.category-btn[data-id="${initialCategoryId}"]`);
+    if (initialCategoryButton) {
+        handleClickCategory({ currentTarget: initialCategoryButton });
     } else {
-        renderProducts(defaultCategoryId);
+        renderProducts(initialCategoryId);
     }
 }
+//Funcion para los botones de "Pedir Ahora" del menu
+document.addEventListener("click", function(e) {
+    if (e.target.classList.contains("order-now-btn")) {
+        const btn = e.target;
+        const productId = parseInt(btn.dataset.id);
+        const name = btn.dataset.name;
+        const price = parseFloat(btn.dataset.price);
+        const image = btn.dataset.image;
+
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existingItem = cart.find(p => p.id === productId);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ id: productId, name, price, quantity: 1, image });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        window.location.href = "/checkout";
+    }
+});
 
 document.addEventListener("DOMContentLoaded", render);

@@ -13,7 +13,7 @@
     <!-- VANTA.JS y THREE.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css'])
     @stack('scripts')
     {{-- Este include es para llamar a las importaciones de javascript para que se renderize mejor --}}
     @include('includes.imports')
@@ -30,7 +30,8 @@
     </main>
 
     @include('partials.footer')
-
+    <script type="module" src="{{ Vite::asset('resources/js/review.js') }}"></script>
     <script type="module" src="{{ Vite::asset('resources/js/nav.js') }}"></script>
+    <script type="module" src="{{ Vite::asset('resources/js/menu.js') }}"></script>
 </body>
 </html>
