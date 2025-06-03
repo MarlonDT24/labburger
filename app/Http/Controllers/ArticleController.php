@@ -17,28 +17,17 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::with(['user', 'category', 'comments'])->get();
-
         $categories = ArticleCategory::withCount('articles')->get();
-
         return view('articles.index', compact('articles', 'categories'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $categories = ArticleCategory::all();
         return view('articles.create', compact('categories'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $article = new Article();
-
         if (Auth::check()) {
             $article->user_id = Auth::id();
         }
@@ -63,23 +52,13 @@ class ArticleController extends Controller
             $article->image = "/img/blog/{$folder}/{$filename}";
         }
         $article->save();
-
-
-
         return redirect()->route('articles.index');
     }
-
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(string $id)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Article $article)
     {
         $categories = ArticleCategory::all();
@@ -110,18 +89,14 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
          $article->delete();
-
         return redirect()->route('blog.index');
     }
 
     public function category($id)
     {
-         $category = ArticleCategory::findOrFail($id);
-
+        $category = ArticleCategory::findOrFail($id);
         $articles = Article::where('category_id', $category->id)->get();
-
         $categories = ArticleCategory::all();
-
         return view('articles.index', compact('articles', 'categories'));
     }
 }

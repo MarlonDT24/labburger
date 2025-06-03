@@ -68,7 +68,6 @@ return view('reservations.user');
 //Rutas para el blog
 Route::get('/blog', [ArticleController::class, 'index'])->name('articles.index');
 Route::get('/blog/category/{id}', [ArticleController::class, 'category'])->name('blog.category');
-
 //Rutas para crear artículos (requieren autenticación y rol de admin)
 Route::middleware('auth')->group(function () {
     Route::get('/blog/create', [ArticleController::class, 'create'])->name('articles.create');
