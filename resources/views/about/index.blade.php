@@ -90,13 +90,13 @@
                     <p class="text-gray-600">Cocinero Principal</p>
                     <!-- Redes sociales -->
                     <div class="mt-3 flex justify-center gap-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <a href="#" class="transform transition-transform duration-300 hover:scale-125 hover:text-blue-500">
+                        <a href="https://es-la.facebook.com" class="transform transition-transform duration-300 hover:scale-125 hover:text-blue-500">
                             <i class="fab fa-facebook fa-2x"></i>
                         </a>
-                        <a href="#" class="transform transition-transform duration-300 hover:scale-125 hover:text-pink-500">
+                        <a href="https://www.instagram.com" class="transform transition-transform duration-300 hover:scale-125 hover:text-pink-500">
                             <i class="fab fa-instagram fa-2x"></i>
                         </a>
-                        <a href="#" class="transform transition-transform duration-300 hover:scale-125 hover:text-sky-400">
+                        <a href="https://x.com/?lang=es" class="transform transition-transform duration-300 hover:scale-125 hover:text-sky-400">
                             <i class="fab fa-twitter fa-2x"></i>
                         </a>
                     </div>
@@ -107,13 +107,13 @@
                     <h3 class="text-xl font-bold text-black mb-2">Pedro</h3>
                     <p class="text-gray-600">Jefe de Sala</p>
                         <div class="mt-3 flex justify-center gap-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            <a href="#" class="transform transition-transform duration-300 hover:scale-125 hover:text-blue-500">
+                            <a href="https://es-la.facebook.com" class="transform transition-transform duration-300 hover:scale-125 hover:text-blue-500">
                                 <i class="fab fa-facebook fa-2x"></i>
                             </a>
-                            <a href="#" class="transform transition-transform duration-300 hover:scale-125 hover:text-pink-500">
+                            <a href="https://www.instagram.com" class="transform transition-transform duration-300 hover:scale-125 hover:text-pink-500">
                                 <i class="fab fa-instagram fa-2x"></i>
                             </a>
-                            <a href="#" class="transform transition-transform duration-300 hover:scale-125 hover:text-sky-400">
+                            <a href="https://x.com/?lang=es" class="transform transition-transform duration-300 hover:scale-125 hover:text-sky-400">
                                 <i class="fab fa-twitter fa-2x"></i>
                             </a>
                         </div>
@@ -124,13 +124,13 @@
                     <h3 class="text-xl font-bold text-black mb-2">Jaime</h3>
                     <p class="text-gray-600">Ayudante de Cocina</p>
                     <div class="mt-3 flex justify-center gap-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <a href="#" class="transform transition-transform duration-300 hover:scale-125 hover:text-blue-500">
+                        <a href="https://es-la.facebook.com" class="transform transition-transform duration-300 hover:scale-125 hover:text-blue-500">
                             <i class="fab fa-facebook fa-2x"></i>
                         </a>
-                        <a href="#" class="transform transition-transform duration-300 hover:scale-125 hover:text-pink-500">
+                        <a href="https://www.instagram.com" class="transform transition-transform duration-300 hover:scale-125 hover:text-pink-500">
                             <i class="fab fa-instagram fa-2x"></i>
                         </a>
-                        <a href="#" class="transform transition-transform duration-300 hover:scale-125 hover:text-sky-400">
+                        <a href="https://x.com/?lang=es" class="transform transition-transform duration-300 hover:scale-125 hover:text-sky-400">
                             <i class="fab fa-twitter fa-2x"></i>
                         </a>
                     </div>

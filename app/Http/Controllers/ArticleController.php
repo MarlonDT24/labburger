@@ -16,7 +16,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::with(['user', 'category', 'comments'])->get();
+        $articles = Article::with(['user', 'category', 'comments'])->orderBy('published_at', 'desc')->get();
         $categories = ArticleCategory::withCount('articles')->get();
         return view('articles.index', compact('articles', 'categories'));
     }
@@ -34,6 +34,7 @@ class ArticleController extends Controller
         $article->category_id = $request->input('category_id');
         $article->title = $request->input('title');
         $article->content = $request->input('content');
+        $article->published_at = now();
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -54,15 +55,14 @@ class ArticleController extends Controller
         $article->save();
         return redirect()->route('articles.index');
     }
-    
+
     public function show(string $id)
     {
         //
     }
     public function edit(Article $article)
     {
-        $categories = ArticleCategory::all();
-        return view('articles.edit', compact('article', 'categories'));
+        //No se necesita ya que se edita con AJAX
     }
 
     /**
@@ -70,17 +70,7 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        $data = $request->all();
-
-        if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('articles', 'public');
-        }
-
-        $data['slug'] = Str::slug($data['title']);
-
-        $article->update($data);
-
-        return redirect()->route('blog.index');
+        //No se necesita ya que se actualiza con AJAX
     }
 
     /**
@@ -88,15 +78,30 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-         $article->delete();
-        return redirect()->route('blog.index');
+        //No se necesita ya que se elimina con AJAX
     }
 
     public function category($id)
     {
         $category = ArticleCategory::findOrFail($id);
-        $articles = Article::where('category_id', $category->id)->get();
-        $categories = ArticleCategory::all();
-        return view('articles.index', compact('articles', 'categories'));
+        $articles = Article::where('category_id', $category->id)->orderBy('published_at', 'desc')->with(['user', 'category', 'comments'])->get();
+        $categories = ArticleCategory::withCount('articles')->get();
+        return view('articles.index', compact('articles', 'categories', 'category'));
+    }
+
+    public function ajaxUpdate(Request $request, Article $article)
+    {
+        $article->title = $request->title ?? $article->title;
+        $article->content = $request->content ?? $article->content;
+        $article->category_id = $request->category_id ?? $article->category_id;
+        $article->save();
+
+        return response()->json(['success' => true]);
+    }
+
+    public function ajaxDelete(Article $article)
+    {
+        $article->delete();
+        return response()->json(['success' => true]);
     }
 }

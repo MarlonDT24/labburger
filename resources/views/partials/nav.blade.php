@@ -11,33 +11,35 @@
         <span class="relative z-10 font-techno">Nosotros</span>
     </a>
     @auth
-        @if (Auth::user()->type === 'administrador')
-            <a href="{{ route('articles.create') }}" class="nav-link relative px-4 py-2 overflow-hidden">
-                <span class="relative z-10 font-techno">Administrar Blog</span>
-            </a>
+            @if (Auth::user()->type === 'administrador')
+                <a href="{{ route('articles.index') }}" class="nav-link relative px-4 py-2 overflow-hidden">
+                    <span class="relative z-10 font-techno">Blog</span>
+                </a>
+
+                <a href="{{ route('monthburgers.index') }}" class="nav-link relative px-4 py-2 overflow-hidden">
+                    <span class="relative z-10 font-techno">Propuestas de Hamburguesa del Mes</span>
+                </a>
+            @else
+                <a href="{{ route('articles.index') }}" class="nav-link relative px-4 py-2 overflow-hidden">
+                    <span class="relative z-10 font-techno">Blog</span>
+                </a>
+                <a href="{{ route('monthburgers.create') }}" class="nav-link relative px-4 py-2 overflow-hidden">
+                    <span class="relative z-10 font-techno">Crear Hamburguesa del Mes</span>
+                </a>
+            @endif
         @else
             <a href="{{ route('articles.index') }}" class="nav-link relative px-4 py-2 overflow-hidden">
                 <span class="relative z-10 font-techno">Blog</span>
             </a>
-        @endif
-    @else
-        <a href="{{ route('articles.index') }}" class="nav-link relative px-4 py-2 overflow-hidden">
-            <span class="relative z-10 font-techno">Blog</span>
-        </a>
-    @endauth
-     @auth
-        <!-- Botón activo para usuarios logueados -->
-        <a href="{{ route('monthburgers.create') }}" class="nav-link relative px-4 py-2 overflow-hidden">
-            <span class="relative z-10 font-techno">Crear Hamburguesa del Mes</span>
-        </a>
-    @else
-        <!-- Botón desactivado para invitados -->
-        <div class="relative px-4 py-2 overflow-hidden text-gray-400">
-            <span class="relative z-10 font-techno">Crear Hamburguesa del Mes</span>
-            <div class="text-xs mt-1 text-blue-700">Regístrate para crear la Hamburguesa del Mes</div>
-        </div>
-    @endauth
+            <!-- Botón desactivado para invitados -->
+            <div class="relative px-4 py-2 overflow-hidden text-gray-400">
+                <span class="relative z-10 font-techno">Crear Hamburguesa del Mes</span>
+                <div class="text-xs mt-1 text-blue-700">Regístrate para crear la Hamburguesa del Mes</div>
+            </div>
+        @endauth
 </nav>
+
+
 
 <div class="flex justify-center items-center px-4">
     <div id="logoContainer" class="relative w-[110px] h-[80px] cursor-pointer">
@@ -63,38 +65,39 @@
 
     <div class="flex justify-center items-center">
         @if (Auth::check())
-            <!-- Botón de usuario con menu desplegable -->
-            <div class="relative group">
-                <button class="flex items-center space-x-2 text-gray-800 font-semibold focus:outline-none">
-                    <!-- Avatar redondo -->
-                    <img src="{{ Auth::user()->avatar }}" alt="Avatar"
-                        class="w-11 h-11 rounded-full object-cover border border-gray-600">
-                    <span>{{ Auth::user()->name }} {{ Auth::user()->surname }}</span>
-                </button>
-                <!-- Menu desplegable -->
-                <div
-                    class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-md invisible opacity-0 group-hover:visible group-hover:opacity-100 transition duration-200 z-50">
-                    <a href="{{ route('users.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-blue-600">Mi perfil</a>
+        <!-- Botón de usuario con menu desplegable -->
+        <div class="relative group">
+            <button class="flex items-center space-x-2 text-gray-800 font-semibold focus:outline-none">
+                <img src="{{ Auth::user()->avatar }}" alt="Avatar"
+                    class="w-11 h-11 rounded-full object-cover border border-gray-600">
+                <span>{{ Auth::user()->name }} {{ Auth::user()->surname }}</span>
+            </button>
+
+            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-md invisible opacity-0 group-hover:visible group-hover:opacity-100 transition duration-200 z-50">
+                <a href="{{ route('users.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-blue-600">Mi perfil</a>
+
+                @if (Auth::user()->type === 'administrador')
+                    <a href="{{ route('articles.create') }}" class="block px-4 py-2 text-gray-700 hover:bg-blue-600">Publicar Artículo</a>
+                @else
                     <a href="{{ route('orders.user') }}" class="block px-4 py-2 text-gray-700 hover:bg-blue-600">Mis pedidos</a>
-                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-600">Mis reservas</a>
-                    <form action="{{ route('logout') }}" method="POST" class="block">
-                        @csrf
-                        <button type="submit" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-400">Cerrar
-                            sesión</button>
-                    </form>
-                </div>
+                    <a href="{{ route('reservations.user') }}" class="block px-4 py-2 text-gray-700 hover:bg-blue-600">Mis reservas</a>
+                @endif
+
+                <form action="{{ route('logout') }}" method="POST" class="block">
+                    @csrf
+                    <button type="submit" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-400">Cerrar sesión</button>
+                </form>
             </div>
-        @else
-            <div class="flex items-center space-x-3">
-                <a href="{{ route('login') }}"
-                    class="relative text-blue-600 link-underline px-2 login-link font-techno">
-                    Iniciar sesión
-                </a>
-                <a href="{{ route('signup') }}"
-                    class="relative text-blue-600 link-underline px-2 login-link font-techno">
-                    Registrarse
-                </a>
-            </div>
-        @endauth
-</div>
+        </div>
+    @else
+        <div class="flex items-center space-x-3">
+            <a href="{{ route('login') }}" class="relative text-blue-600 link-underline px-2 login-link font-techno">
+                Iniciar sesión
+            </a>
+            <a href="{{ route('signup') }}" class="relative text-blue-600 link-underline px-2 login-link font-techno">
+                Registrarse
+            </a>
+        </div>
+    @endif
+    </div>
 </div>

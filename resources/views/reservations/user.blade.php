@@ -64,7 +64,7 @@
             <!-- Listado de reservas -->
             <div class="w-full md:w-2/3 flex flex-col gap-6">
                 @if (Auth::user()->reservations->isEmpty())
-                            <p class="text-gray-600">Aún no has realizado ningúna reserva.</p>
+                            <p class="text-white">Aún no has realizado ningúna reserva.</p>
                 @else
                     @forelse(Auth::user()->reservations->sortByDesc('date') as $reservation)
                         <div class="bg-white p-6 rounded-lg shadow-lg transition hover:shadow-xl relative">
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                     @empty
-                        <p class="text-gray-600">Aún no has realizado ninguna reserva.</p>
+                        <p class="text-white">Aún no has realizado ninguna reserva.</p>
                     @endforelse
                 @endif
             </div>

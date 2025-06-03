@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "gsap": "^3.13.0",
+        "html2canvas": "^1.4.1",
         "swiper": "^11.2.8"
     }
 }

@@ -186,3 +186,6 @@
     opacity: 1;
     transform: translateY(0);
 }
+.shadow-lg {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}

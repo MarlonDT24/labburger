@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Monthburger;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MonthburgerController extends Controller
 {
@@ -12,7 +13,8 @@ class MonthburgerController extends Controller
      */
     public function index()
     {
-        $monthburger = Monthburger::all();
+        // Se pasan todos los usuarios que han creado la hamburguesa del mes
+        $monthburger = Monthburger::with('user')->get();
         return view('monthburgers.index', compact('monthburger'));
     }
 
@@ -29,13 +31,19 @@ class MonthburgerController extends Controller
      */
     public function store(Request $request)
     {
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $ingredients = $request->input('ingredients');
+
+        // Guardamos
         $monthburger = new Monthburger();
-        $monthburger->name = $request->input('name');
-        $monthburger->description = $request->input('description');
-        $monthburger->ingredients = $request->input('ingredients');
+        $monthburger->name = $name;
+        $monthburger->description = $description;
+        $monthburger->ingredients = json_encode($ingredients);
+         $monthburger->user_id = Auth::id();
         $monthburger->save();
 
-        return redirect()->route('monthburgers.index');
+        return redirect()->route('monthburgers.show', $monthburger->id);
     }
 
     /**

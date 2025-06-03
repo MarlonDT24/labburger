@@ -11,6 +11,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\MonthburgerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArticleCommentController;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -75,12 +76,18 @@ Route::middleware('auth')->group(function () {
 });
 
 // Rutas para los comentarios (requieren login)
-/* Route::middleware('auth')->group(function () {
-    Route::post('/blog/{post}/comment', [CommentController::class, 'store'])->name('comments.store');
-}); */
+Route::middleware('auth')->group(function () {
+    Route::post('/blog/{article}/comment', [ArticleCommentController::class, 'store'])->name('comments.store');
+});
+
+// Edición de artículo vía AJAX
+Route::put('/blog/{article}/update', [ArticleController::class, 'ajaxUpdate'])->middleware('auth');
+// Eliminación vía AJAX
+Route::delete('/blog/{article}/delete', [ArticleController::class, 'ajaxDelete'])->middleware('auth');
+
 
 // Rutas crear las hamburguesas del mes
 Route::middleware('auth')->group(function () {
-    Route::resource('monthburgers', MonthburgerController::class)->except(['edit', 'update', 'destroy']);
+    Route::resource('monthburgers', MonthburgerController::class)->except(['edit', 'update']);
 });
 

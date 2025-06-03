@@ -67,7 +67,7 @@
                 <!-- Pedidos -->
                 <div class="w-full md:w-2/3 flex flex-col gap-6">
                     @if ($orders->isEmpty())
-                        <p class="text-gray-600">Aún no has realizado ningún pedido.</p>
+                        <p class="text-white">Aún no has realizado ningún pedido.</p>
                     @else
                         @foreach ($orders as $order)
                             <div class="bg-white rounded-lg shadow-md p-6 flex flex-col gap-4">
