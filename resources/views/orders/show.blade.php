@@ -21,17 +21,39 @@
                 <!-- Info cliente -->
                 <div class="bg-white rounded-lg shadow-lg p-6 space-y-3">
                     <h3 class="text-xl font-semibold mb-4 text-blue-800 font-techno">Datos del cliente</h3>
-                    <p>Nombre: {{ $order->name }} {{ $order->surname }}</p>
-                    <p>Dirección: {{ $order->address }} {{ $order->portal ? ' - Portal: ' . $order->portal : '' }} {{ $order->door ? ' - Puerta: ' . $order->door : '' }}</p>
-                    <p>Teléfono: {{ $order->phone }}</p>
-                    <p>Email: {{ $order->email }}</p>
-                    <p>Método de pago: {{ ucfirst(str_replace('_', ' ', $order->payment_method)) }}</p>
-                    <p>Estado: {{ ucfirst($order->state) }}</p>
-                    <p>Fecha: {{ $order->date }}</p>
+                    <p>
+                        <span class="font-bold">Nombre: </span>
+                        <span>{{ $order->name }}</span>
+                        <span>{{ $order->surname }}</span>
+                    </p>
+                    <p>
+                        <span class="font-bold">Dirección: </span>
+                        <span>{{ $order->address }} {{ $order->portal ? ' - Portal: ' . $order->portal : '' }} {{ $order->door ? ' - Puerta: ' . $order->door : '' }}</span>
+                    </p>
+                    <p>
+                        <span class="font-bold">Teléfono: </span>
+                        <span>{{ $order->phone }}</span>
+                    </p>
+                    <p>
+                        <span class="font-bold">Email: </span>
+                        <span>{{ $order->email }}</span>
+                    </p>
+                    <p>
+                        <span class="font-bold">Método de pago: </span>
+                        <span>{{ ucfirst(str_replace('_', ' ', $order->payment_method)) }}</span>
+                    </p>
+                    <p>
+                        <span class="font-bold">Estado: </span>
+                        <span>{{ ucfirst($order->state) }}</span>
+                    </p>
+                    <p>
+                        <span class="font-bold">Fecha: </span>
+                        <span>{{ $order->date }}</span>
+                    </p>
                 </div>
 
                 <!-- Productos -->
-                <div class="bg-white rounded-lg shadow-lg p-16">
+                <div class="bg-white rounded-lg shadow-lg p-6">
                     <h3 class="text-xl font-semibold mb-4 text-blue-800 font-techno">Productos solicitados</h3>
                     <table class="w-full text-sm text-left border-collapse">
                         <thead>

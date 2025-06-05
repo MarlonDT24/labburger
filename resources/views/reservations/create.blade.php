@@ -12,7 +12,7 @@
         </div>
     </section>
 
-    <section class="bg-white py-16">
+    <section class="bg-gray-300 py-16">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <!-- Calendario y contacto -->
             <div class="space-y-6">
@@ -31,13 +31,8 @@
 
                 <!-- Contacto -->
                 <div class="mt-6 space-y-3">
-                    <p class="font-bold text-lg text-blue-800">Llámanos</p>
-                    <p class="text-2xl text-red-600 font-extrabold">+34 654 987 321</p>
-                    <div class="flex gap-4">
-                        <a href="#"><i class="fab fa-facebook text-blue-600 text-xl"></i></a>
-                        <a href="#"><i class="fab fa-instagram text-pink-500 text-xl"></i></a>
-                        <a href="#"><i class="fab fa-twitter text-sky-500 text-xl"></i></a>
-                    </div>
+                    <p class="font-bold text-lg text-blue-800">En caso de duda ¡Llámanos!</p>
+                    <p class="text-2xl text-blue-800 font-bold glow-blue">+34 666 333 444</p>
                 </div>
             </div>
 

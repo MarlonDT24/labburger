@@ -39,7 +39,7 @@
                     <div>
                         <label for="name" class="block text-blue-700 font-semibold font-techno">Nombre Completo</label>
                         <input type="text" name="name" id="name" value="{{ old('name') }}"
-                            class="w-full px-4 py-2 mt-1 border-1 border-gray-400 rounded-lg text-black
+                            class="w-full px-4 py-1 mt-1 border-1 border-gray-400 rounded-lg text-black
                             focus:outline-none focus:ring-2 focus:ring-blue-500
                             hover:border-blue-500 transition-all duration-150">
                     </div>
@@ -47,7 +47,7 @@
                     <div>
                         <label for="surname" class="block text-blue-700 font-semibold font-techno">Apellidos</label>
                         <input type="text" name="surname" id="surname" value="{{ old('surname') }}"
-                            class="w-full px-4 py-2 mt-1 border-1 border-gray-400 rounded-lg text-black
+                            class="w-full px-4 py-1 mt-1 border-1 border-gray-400 rounded-lg text-black
                             focus:outline-none focus:ring-2 focus:ring-blue-500
                             hover:border-blue-500 transition-all duration-150">
                     </div>
@@ -55,7 +55,7 @@
                     <div>
                         <label for="phone" class="block text-blue-700 font-semibold font-techno">Teléfono</label>
                         <input type="text" name="phone" id="phone" value="{{ old('phone') }}"
-                            class="w-full px-4 py-2 mt-1 border-1 border-gray-400 rounded-lg text-black
+                            class="w-full px-4 py-1 mt-1 border-1 border-gray-400 rounded-lg text-black
                             focus:outline-none focus:ring-2 focus:ring-blue-500
                             hover:border-blue-500 transition-all duration-150">
                     </div>
@@ -64,7 +64,7 @@
                         <label for="email" class="block text-blue-700 font-semibold font-techno">Correo
                             Electrónico</label>
                         <input type="email" name="email" id="email" value="{{ old('email') }}"
-                            class="w-full px-4 py-2 mt-1 border-1 border-gray-400 rounded-lg text-black
+                            class="w-full px-4 py-1 mt-1 border-1 border-gray-400 rounded-lg text-black
                             focus:outline-none focus:ring-2 focus:ring-blue-500
                             hover:border-blue-500 transition-all duration-150">
                     </div>
@@ -73,7 +73,7 @@
                         <label for="password" class="block text-blue-700 font-semibold font-techno">Contraseña</label>
                         <div class="relative">
                             <input type="password" name="password" id="password"
-                                class="w-full px-4 py-2 mt-1 border-1 border-gray-400 rounded-lg text-black
+                                class="w-full px-4 py-1 mt-1 border-1 border-gray-400 rounded-lg text-black
                             focus:outline-none focus:ring-2 focus:ring-blue-500
                             hover:border-blue-500 transition-all duration-150">
                             <span id="togglePassword"
@@ -88,7 +88,7 @@
                             Contraseña</label>
                         <div class="relative">
                             <input type="password" name="password_confirmation" id="password_confirmation"
-                                class="w-full px-4 py-2 mt-1 border-1 border-gray-400 rounded-lg text-black
+                                class="w-full px-4 py-1 mt-1 border-1 border-gray-400 rounded-lg text-black
                             focus:outline-none focus:ring-2 focus:ring-blue-500
                             hover:border-blue-500 transition-all duration-150">
                             <span id="togglePasswordConfirm"

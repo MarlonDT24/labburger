@@ -18,7 +18,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = Order::all();
+        $orders = Order::all();
         return view('orders.index', compact('orders'));
     }
 
@@ -61,24 +61,9 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        // Solo se permite modicar algunos datos si aún está pendiente
-        if ($order->state !== 'pendiente') {
-            return redirect()->route('orders.show', $order);
-        }
-
-        // Se pueden asignar nuevos datos
-        $order->name = $request->input('name');
-        $order->surname = $request->input('surname');
-        $order->address = $request->input('address');
-        $order->portal = $request->input('portal');
-        $order->door = $request->input('door');
-        $order->notes = $request->input('notes');
-        $order->email = $request->input('email');
-        $order->phone = $request->input('phone');
-        $order->delivery_method = $request->input('delivery_method', $order->delivery_method);
+        $order->state = $request->input('state');
         $order->save();
-
-        return redirect()->route('orders.show', $order->id);
+        return redirect()->route('orders.index');
     }
 
     /**

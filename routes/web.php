@@ -55,10 +55,12 @@ Route::post('/api/cart', function (Request $request) {
 //Ruta para ver los pedidos del usuario registrado
 Route::get('/mis-pedidos', [OrderController::class, 'userOrders'])->middleware('auth')->name('orders.user');
 //Rutas de los pedidos para admins
-Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
-Route::get('/admin/orders', [OrderController::class, 'adminIndex'])->middleware('auth')->name('orders.admin');
+Route::get('/admin/orders', [OrderController::class, 'index'])->middleware('auth')->name('orders.index');
+Route::get('/admin/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+Route::put('/admin/orders/{order}', [OrderController::class, 'update'])->middleware('auth')->name('orders.update');
 
 //Rutas para las reservas
+Route::get('/admin/reservations', [ReservationController::class, 'index'])->middleware('auth')->name('reservations.index');
 Route::resource('reservations', ReservationController::class)->only(['create', 'store', 'show']);
 //Rutas para las reservas de los usuarios registrados
 Route::get('/mis-reservas', function () {

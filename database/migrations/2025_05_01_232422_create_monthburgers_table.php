@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('monthburgers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('name');
             $table->text('description');
             $table->json('ingredients');

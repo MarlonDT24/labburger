@@ -13,6 +13,7 @@
                     comments="{{ $review->comments }}"
                     rating="{{ $review->rating }}"
                     product="{{ $review->product->name ?? null }}"
+                    reviewId="{{ $review->id }}"
                 />
             @endforeach
         </div>

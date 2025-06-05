@@ -60,16 +60,16 @@
                 <!-- Botones -->
                 <div class="mt-10 flex flex-wrap justify-center gap-4 animate-fade-in-up delay-300">
                     <a href="{{ route('home') }}"
-                       class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                       class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition duration-300 transform hover:scale-105 font-techno">
                         Volver al Inicio
                     </a>
                     <a href="{{ route('reservations.create') }}"
-                       class="px-6 py-3 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition duration-300 transform hover:scale-105">
+                       class="px-6 py-3 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition duration-300 transform hover:scale-105 font-techno">
                         Realizar otra Reserva
                     </a>
                     @auth
                         <a href="{{ route('reservations.user') }}"
-                           class="px-6 py-3 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600 transition duration-300 transform hover:scale-105">
+                           class="px-6 py-3 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600 transition duration-300 transform hover:scale-105 font-techno">
                             Mis Reservas
                         </a>
                     @endauth

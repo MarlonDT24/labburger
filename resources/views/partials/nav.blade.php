@@ -51,8 +51,8 @@
     <div class="hidden md:flex justify-end items-center space-x-5">
         @auth
             @if (Auth::user()->type === 'administrador')
-                <x-button url="{{ route('orders.admin') }}">Administrar Pedidos</x-button>
-                <x-button url="#">Gestionar Mesas</x-button> {{-- Añadir ruta real luego --}}
+                <x-button url="{{ route('orders.index') }}">Administrar Pedidos</x-button>
+                <x-button url="{{ route('reservations.index') }}">Gestionar Mesas</x-button>
             @else
                 <x-button url="{{ route('orders.create') }}" isPrimary="true">Realizar Pedido</x-button>
                 <x-button url="{{ route('reservations.create') }}">Resevar Mesa</x-button>

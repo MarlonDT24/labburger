@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="mt-6 bg-blue-100 p-4 rounded text-center">
+                                <div class="mt-6 bg-blue-200 p-4 rounded text-center">
                                     <p class="mb-4 text-blue-800 font-semibold">Para comentar debes iniciar sesión.</p>
                                     <a href="{{ route('loginForm') }}"
                                         class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Iniciar Sesión</a>

@@ -13,16 +13,18 @@ class ReviewCard extends Component
     public int $rating;
     public string $comments;
     public string|null $product = null;
+    public int $reviewId;
     /**
      * Create a new component instance.
      */
-    public function __construct($user = 'not found', $avatar = '', $comments = 'not found', $rating = 0, $product = null)
+    public function __construct($user = 'not found', $avatar = '', $comments = 'not found', $rating = 0, $product = null, $reviewId = 0)
     {
         $this->user = $user;
         $this->avatar = $avatar;
         $this->comments = $comments;
         $this->rating = $rating;
         $this->product = $product;
+        $this->reviewId = $reviewId;
     }
 
     /**

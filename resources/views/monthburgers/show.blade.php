@@ -5,7 +5,9 @@
 @section('content')
 <section class="bg-gray-300">
     <div class="max-w-3xl mx-auto py-12 text-center">
-        <h1 class="text-3xl font-bold mb-6">¡Tu propuesta ha sido enviada!</h1>
+        @if (Auth::user()->type === 'cliente')
+            <h1 class="text-3xl font-bold mb-6">¡Tu propuesta ha sido enviada!</h1>
+        @endif
 
         <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-8 rounded-lg shadow-lg mb-10">
             <h2 class="text-3xl text-white font-bold mb-4">{{ $monthburger->name }}</h2>
@@ -17,6 +19,9 @@
         @endphp
 
         <div class="bg-white p-8 rounded-lg shadow-lg">
+            <div class="mb-4">
+                        <p class="text-sm text-gray-500">Propuesto por: <span class="font-bold text-blue-700">{{ $proposal->user->name ?? 'Anónimo' }}</span></p>
+            </div>
             <h3 class="text-2xl font-techno text-blue-700 mb-6 glow-blue">Ingredientes Seleccionados</h3>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
