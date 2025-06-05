@@ -8,7 +8,17 @@
         <div>
             <h2 class="text-3xl font-bold text-blue-800 mb-6 font-techno">Datos de envío</h2>
 
-            <form action="{{ route('orders.process') }}" method="POST" class="space-y-4">
+            @if ($errors->any())
+                <div class="bg-red-100 text-red-700 p-3 rounded mb-4">
+                    <ul class="list-disc list-inside text-sm">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{ route('orders.process') }}" method="POST" class="space-y-4" id="checkout-form">
                 @csrf
 
                 <div class="grid md:grid-cols-2 gap-4">
@@ -116,6 +126,9 @@
             </a>
         </div>
     </div>
+<script>
+    const serverErrors = @json($errors->toArray());
+</script>
 @endsection
 @push('scripts')
     <script type="module" src="{{ Vite::asset('resources/js/checkout.js') }}"></script>

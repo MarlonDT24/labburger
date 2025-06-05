@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use App\Http\Requests\ReservationRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -47,7 +48,7 @@ class ReservationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ReservationRequest $request)
     {
         // Crear la reserva
         $reservation = new Reservation();
@@ -57,14 +58,16 @@ class ReservationController extends Controller
             $reservation->user_id = Auth::id();
         }
 
-        $reservation->name = $request->input('name');
-        $reservation->surname = $request->input('surname');
-        $reservation->phone = $request->input('phone');
-        $reservation->email = $request->input('email');
-        $reservation->date = Carbon::createFromFormat('d-m-Y', $request->input('date'))->format('Y-m-d');
-        $reservation->hour = $request->input('hour');
-        $reservation->number_people = $request->input('number_people');
-        $reservation->message = $request->input('message');
+        $data = $request->validated();
+
+        $reservation->name = $data->input('name');
+        $reservation->surname = $data->input('surname');
+        $reservation->phone = $data->input('phone');
+        $reservation->email = $data->input('email');
+        $reservation->date = Carbon::createFromFormat('d-m-Y', $data->input('date'))->format('Y-m-d');
+        $reservation->hour = $data->input('hour');
+        $reservation->number_people = $data->input('number_people');
+        $reservation->message = $data->input('message');
         $reservation->save();
 
         return redirect()->route('reservations.show', $reservation->id);

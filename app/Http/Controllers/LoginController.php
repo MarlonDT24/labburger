@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
+use App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -45,22 +46,19 @@ class LoginController extends Controller
         }
     }
 
-    public function login(Request $request): View|RedirectResponse
+    public function login(LoginRequest $request): View|RedirectResponse
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        $credentials = $request->validated();
 
         $remember = $request->filled('remember');
 
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
             return redirect()->route('home');
-        } else {
-            $error = 'Error al acceder a la aplicación';
-            return view('auth.login', compact('error'));
         }
+        return back()->withErrors([
+            'email' => 'Las credenciales son incorrectas.',
+        ])->withInput();
     }
 
     public function logout(Request $request): RedirectResponse

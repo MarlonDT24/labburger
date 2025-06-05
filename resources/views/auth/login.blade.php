@@ -23,30 +23,15 @@
                 <p class="text-white text-sm italic font-light text-center">¡Explora el sabor, una sesión a la vez!</p>
             </div>
 
-            @if (session('success'))
-                <div class="bg-green-100 text-green-700 px-4 py-2 rounded mb-4 text-sm">
-                    {{ session('success') }}
-                </div>
-            @endif
-
-            @if ($errors->any())
-                <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4 text-sm">
-                    <ul class="list-disc list-inside">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
             <form action="{{ route('login') }}" method="post" class="space-y-4">
                 @csrf
 
                 <div>
                     <label for="email" class="block text-white font-semibold font-techno">Correo Electrónico</label>
-                    <input type="email" name="email" id="email" value="{{ old('email') }}"
+                    <input name="email" id="email" value="{{ old('email') }}"
                         class="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-white bg-white"
                         required>
+                        @error('email') <p class="text-sm text-red-400 mt-1">{{ $message }}</p> @enderror
                 </div>
 
                 <div>
@@ -60,6 +45,7 @@
                             👁️
                         </span>
                     </div>
+                    @error('password') <p class="text-sm text-red-500 mt-1">{{ $message }}</p> @enderror
                 </div>
 
                 <div class="flex items-center">

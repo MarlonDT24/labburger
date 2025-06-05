@@ -38,6 +38,15 @@
 
             <!-- Formulario -->
             <div id="reservation-form-wrapper" class="opacity-0 translate-y-6">
+                @if ($errors->any())
+                    <div class="bg-red-100 text-red-700 p-3 rounded mb-4">
+                        <ul class="list-disc list-inside text-sm">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form method="POST" action="{{ route('reservations.store') }}" class="bg-gray-50 p-6 rounded-lg shadow-lg space-y-4">
                     @csrf
                     <h3 class="text-2xl font-bold text-blue-800 font-techno mb-2">Reserva tu mesa</h3>

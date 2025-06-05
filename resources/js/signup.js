@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     const card = document.getElementById('signup-card');
     if (card) {
         card.classList.remove('opacity-0', 'translate-y-10');
@@ -24,20 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const form = document.getElementById('signup-form');
-    if (form) {
-        form.querySelectorAll('input').forEach(input => {
-            input.addEventListener('input', () => {
-                if (input.value.trim().length > 1) {
-                    input.classList.add('border-green-500');
-                    input.classList.remove('border-red-500');
-                } else {
-                    input.classList.remove('border-green-500');
-                    input.classList.add('border-red-500');
-                }
-            });
-        });
-    }
+
 
     // Activar VANTA
     if (typeof VANTA !== "undefined") {

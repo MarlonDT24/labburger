@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (method === 'bank') {
             container.innerHTML = `
                 <input type="text" name="bank_owner" placeholder="Titular de la cuenta" class="input-style" required>
-                <input type="text" name="bank_iban" placeholder="IBAN (ESxx xxxx xxxx xxxx xxxx xxxx)" class="input-style" required>
+                <input type="text" name="bank_iban" placeholder="IBAN (ESxx xxxx xxxx xxxx xxxx xxxx)" class="input-style" maxlength="22" required>
             `;
         }
     };
@@ -34,4 +34,14 @@ document.addEventListener("DOMContentLoaded", function () {
             renderFields(radio.value);
         });
     });
+
+    // Errores para el metodo de pago
+    if (typeof serverErrors !== "undefined") {
+        for (const [field, messages] of Object.entries(serverErrors)) {
+            const input = document.querySelector(`[name="${field}"]`);
+            if (input) {
+                input.classList.add('border-red-500');
+            }
+        }
+    }
 });

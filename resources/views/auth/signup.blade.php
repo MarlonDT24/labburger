@@ -22,51 +22,43 @@
                     </div>
                 </div>
 
-
-                @if ($errors->any())
-                    <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4 text-sm">
-                        <ul class="list-disc list-inside">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
                 <form action="{{ route('signup') }}" method="post" class="space-y-4" id="signup-form">
                     @csrf
 
                     <div>
                         <label for="name" class="block text-blue-700 font-semibold font-techno">Nombre Completo</label>
-                        <input type="text" name="name" id="name" value="{{ old('name') }}"
+                        <input name="name" id="name" value="{{ old('name') }}"
                             class="w-full px-4 py-1 mt-1 border-1 border-gray-400 rounded-lg text-black
                             focus:outline-none focus:ring-2 focus:ring-blue-500
                             hover:border-blue-500 transition-all duration-150">
+                            @error('name') <p class="text-sm text-red-500 mt-1">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
                         <label for="surname" class="block text-blue-700 font-semibold font-techno">Apellidos</label>
-                        <input type="text" name="surname" id="surname" value="{{ old('surname') }}"
+                        <input name="surname" id="surname" value="{{ old('surname') }}"
                             class="w-full px-4 py-1 mt-1 border-1 border-gray-400 rounded-lg text-black
                             focus:outline-none focus:ring-2 focus:ring-blue-500
                             hover:border-blue-500 transition-all duration-150">
+                            @error('surname') <p class="text-sm text-red-500 mt-1">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
                         <label for="phone" class="block text-blue-700 font-semibold font-techno">Teléfono</label>
-                        <input type="text" name="phone" id="phone" value="{{ old('phone') }}"
+                        <input name="phone" id="phone" value="{{ old('phone') }}"
                             class="w-full px-4 py-1 mt-1 border-1 border-gray-400 rounded-lg text-black
                             focus:outline-none focus:ring-2 focus:ring-blue-500
                             hover:border-blue-500 transition-all duration-150">
+                            @error('phone') <p class="text-sm text-red-500 mt-1">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
-                        <label for="email" class="block text-blue-700 font-semibold font-techno">Correo
-                            Electrónico</label>
-                        <input type="email" name="email" id="email" value="{{ old('email') }}"
+                        <label for="email" class="block text-blue-700 font-semibold font-techno">Correo Electrónico</label>
+                        <input name="email" id="email" value="{{ old('email') }}"
                             class="w-full px-4 py-1 mt-1 border-1 border-gray-400 rounded-lg text-black
                             focus:outline-none focus:ring-2 focus:ring-blue-500
                             hover:border-blue-500 transition-all duration-150">
+                            @error('email') <p class="text-sm text-red-500 mt-1">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
@@ -81,6 +73,7 @@
                                 👁️
                             </span>
                         </div>
+                        @error('password') <p class="text-sm text-red-500 mt-1">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
@@ -96,6 +89,7 @@
                                 👁️
                             </span>
                         </div>
+                        @error('password_confirmation') <p class="text-sm text-red-500 mt-1">{{ $message }}</p> @enderror
                     </div>
 
                     <div>

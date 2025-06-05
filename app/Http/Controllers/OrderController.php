@@ -6,7 +6,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Models\OrderProduct;
+use App\Http\Requests\OrderRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Carbon;
@@ -89,7 +89,7 @@ class OrderController extends Controller
         return view('orders.checkout', compact('cart', 'user'));
     }
 
-    public function process(Request $request)
+    public function process(OrderRequest $request)
     {
         // Obtener carrito (puede venir del session o request)
         $cart = Session::get('cart', []);
@@ -98,35 +98,38 @@ class OrderController extends Controller
             return redirect()->route('orders.checkout');
         }
 
+        $data = $request->validated();
+
         // Crear pedido
         $order = new Order();
         $order->user_id = Auth::check() ? Auth::id() : null;
-        $order->name = $request->input('name');
-        $order->surname = $request->input('surname');
-        $order->address = $request->input('address');
-        $order->portal = $request->input('portal');
-        $order->door = $request->input('door');
-        $order->notes = $request->input('observations');
-        $order->email = $request->input('email');
-        $order->phone = $request->input('phone');
-        $order->payment_method = $request->input('payment_method');
+        $order->name = $data->input('name');
+        $order->surname = $data->input('surname');
+        $order->address = $data->input('address');
+        $order->portal = $data->input('portal');
+        $order->door = $data->input('door');
+        $order->notes = $data->input('observations');
+        $order->email = $data->input('email');
+        $order->phone = $data->input('phone');
+        $order->payment_method = $data->input('payment_method');
         $order->state = 'pendiente';
         $order->date = Carbon::now();
-        switch ($request->input('payment_method')) {
+
+        switch ($data->input('payment_method')) {
             case 'credit_card':
-                $order->card_number = $request->input('card_number');
-                $order->card_name = $request->input('card_name');
-                $order->card_expiration = $request->input('card_expiration');
-                $order->card_cvc = $request->input('card_cvc');
+                $order->card_number = $data->input('card_number');
+                $order->card_name = $data->input('card_name');
+                $order->card_expiration = $data->input('card_expiration');
+                $order->card_cvc = $data->input('card_cvc');
                 break;
 
             case 'paypal':
-                $order->paypal_email = $request->input('paypal_email');
+                $order->paypal_email = $data->input('paypal_email');
                 break;
 
             case 'bank':
-                $order->bank_owner = $request->input('bank_owner');
-                $order->bank_iban = $request->input('bank_iban');
+                $order->bank_owner = $data->input('bank_owner');
+                $order->bank_iban = $data->input('bank_iban');
                 break;
 }
         $order->save();

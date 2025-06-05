@@ -25,9 +25,10 @@ class SignupRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'surname' => ['required', 'string'],
-            'phone' => ['required', 'string', 'unique:users'],
+            'phone' => ['required', 'int', 'unique:users'],
             'email' => ['required', 'string', 'min:8', 'max:225', 'unique:users'],
             'password' => ['required', 'confirmed', 'min:8', 'regex:/[A-Z]/', 'regex:/[0-9]/', 'regex:/[\W_]/', Password::default()],
+            'password_confirmation' => ['required', 'string', 'min:8', 'max:225'],
         ];
     }
 
@@ -39,6 +40,7 @@ class SignupRequest extends FormRequest
             'surname.required' => 'Los apellidos son obligatorios',
 
             'phone.required' => 'El número de teléfono es obligatorio',
+            'phone.int' => 'El número de teléfono debe de llevar números no letras',
             'phone.unique' => 'El número de teléfono ya existe en el sistema',
 
             'email.required' => 'El correo electrónico es obligatorio',
@@ -50,6 +52,11 @@ class SignupRequest extends FormRequest
             'password.confirmed' => 'Las contraseñas no coinciden',
             'password.min' => 'La contraseña debe tener como mínimo 8 caracteres',
             'password.regex' => 'La contraseña debe contener al menos una letra mayúscula, un número y un símbolo',
+
+            'password_confirmation.required' => 'La confirmación de la contraseña es obligatoria',
+            'password_confirmation.min' => 'La confirmación de la contraseña debe tener como mínimo 8 carácteres',
+            'password_confirmation.max' => 'La confirmación de la contraseña debe tener como máximo 225 carácteres',
+            'password_confirmation.string' => 'La confirmación de la contraseña debe ser una cadena de texto',
         ];
     }
 }
