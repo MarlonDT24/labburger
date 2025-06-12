@@ -42,6 +42,7 @@ Labburger consiste en una página web sobre una hamburgueseria que permite tanto
 
 ### Requisitos previos
 
+- Laragon
 - PHP >= 8.1
 - Composer
 - MySQL o MariaDB
